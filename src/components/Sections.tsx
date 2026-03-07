@@ -86,7 +86,7 @@ export function Gallery() {
 
 
 // ─── RSVP ──────────────────────────────────────────────────────
-import { useState as useStateRSVP, CSSProperties } from 'react';
+import { useState as useStateRSVP, type CSSProperties } from 'react';
 
 const iStyle: CSSProperties = {
   width:'100%', padding:'0.85rem 1.1rem',

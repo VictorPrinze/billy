@@ -13,11 +13,11 @@
   --gold-pale:     #F8EDD0;   /* warm pale gold */
   --gold-glow:     rgba(212,160,67,0.18);
 
-  --brown:         #5C3D22;   /* was #3D2B1F — lighter */
-  --brown-mid:     #8B6040;   /* was #6B4A30 — lighter */
+  --brown:         #6B4A2E;   /* was #3D2B1F — lighter */
+  --brown-mid:     #9A7050;   /* was #6B4A30 — lighter */
   --brown-light:   #B8905A;   /* was #A07850 — brighter */
 
-  --cream:         #FFFCF5;   /* was #FAF6EF — purer warm white */
+  --cream:         #FFFDF8;   /* was #FAF6EF — purer warm white */
   --cream-dark:    #F5EDDB;   /* was #F0E8D8 */
   --white:         #FFFFFF;
 
@@ -50,7 +50,7 @@ html {
 
 body {
   margin: 0; padding: 0;
-  background: var(--cream);
+  background: #FFFDF8;
   color: var(--brown);
   font-family: var(--font-body);
   overflow-x: hidden;

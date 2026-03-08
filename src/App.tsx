@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { LangProvider } from './components/Langcontext';
+import { useState, useEffect, useRef } from 'react';
+import { LangProvider, useLang } from './components/Langcontext';
 import { useScrollReveal } from './components/Usescrollreveal';
 import Loader from './components/Loader';
 import Navbar from './components/Navbar';
@@ -9,67 +9,174 @@ import EventSection from './components/EventSection';
 import Travel from './components/Travel';
 import { Gallery, RSVP, Footer } from './components/Sections';
 
-// Custom cursor
+// ── Subtle cursor — tiny dot only, mix-blend-mode so it never covers text ──
 function Cursor() {
-  const [pos, setPos] = useState({ x: -100, y: -100 });
-  const [ring, setRing] = useState({ x: -100, y: -100 });
-  const [clicking, setClicking] = useState(false);
+  const dotRef = useRef<HTMLDivElement>(null);
+  const [isTouch, setIsTouch] = useState(false);
 
   useEffect(() => {
-    let rx = -100, ry = -100;
+    // Detect touch device — hide cursor entirely on mobile
+    if ('ontouchstart' in window) { setIsTouch(true); return; }
+
+    let px = -100, py = -100;
     let raf: number;
 
-    const onMove = (e: MouseEvent) => {
-      setPos({ x: e.clientX, y: e.clientY });
-    };
-    const lerp = () => {
-      rx += (pos.x - rx) * 0.12;
-      ry += (pos.y - ry) * 0.12;
-      setRing({ x: rx, y: ry });
-      raf = requestAnimationFrame(lerp);
-    };
-    raf = requestAnimationFrame(lerp);
-    const onDown = () => setClicking(true);
-    const onUp = () => setClicking(false);
+    const onMove = (e: MouseEvent) => { px = e.clientX; py = e.clientY; };
 
-    window.addEventListener('mousemove', onMove);
-    window.addEventListener('mousedown', onDown);
-    window.addEventListener('mouseup', onUp);
+    const animate = () => {
+      if (dotRef.current) {
+        dotRef.current.style.left = px + 'px';
+        dotRef.current.style.top  = py + 'px';
+      }
+      raf = requestAnimationFrame(animate);
+    };
+    raf = requestAnimationFrame(animate);
+
+    window.addEventListener('mousemove', onMove, { passive: true });
     return () => {
       window.removeEventListener('mousemove', onMove);
-      window.removeEventListener('mousedown', onDown);
-      window.removeEventListener('mouseup', onUp);
       cancelAnimationFrame(raf);
     };
-  }, [pos.x, pos.y]);
+  }, []);
+
+  if (isTouch) return null;
 
   return (
-    <>
-      <div style={{
-        position: 'fixed', left: pos.x, top: pos.y,
-        width: clicking ? '6px' : '8px', height: clicking ? '6px' : '8px',
-        borderRadius: '50%', background: '#C9963A',
-        transform: 'translate(-50%,-50%)', pointerEvents: 'none',
-        zIndex: 9998, transition: 'width 0.2s, height 0.2s',
-      }} />
-      <div style={{
-        position: 'fixed', left: ring.x, top: ring.y,
-        width: clicking ? '24px' : '36px', height: clicking ? '24px' : '36px',
-        borderRadius: '50%', border: '1px solid rgba(201,150,58,0.5)',
-        transform: 'translate(-50%,-50%)', pointerEvents: 'none',
-        zIndex: 9997, transition: 'width 0.3s, height 0.3s',
-      }} />
-    </>
+    <div
+      ref={dotRef}
+      style={{
+        position: 'fixed',
+        width: '5px', height: '5px',
+        borderRadius: '50%',
+        background: '#E8C068',
+        transform: 'translate(-50%,-50%)',
+        pointerEvents: 'none',
+        zIndex: 9990,
+        // mix-blend-mode means the dot inverts color under it — never hides text
+        mixBlendMode: 'difference',
+        transition: 'opacity 0.3s',
+      }}
+    />
   );
 }
 
-// Inner app that uses hooks
+// ── Floating Language Switcher — always visible, mobile-first ──
+function LangSwitcher() {
+  const { lang, setLang } = useLang();
+  const [visible, setVisible] = useState(true);
+  const lastScroll = useRef(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const cur = window.scrollY;
+      // Hide when scrolling down fast, show when scrolling up
+      setVisible(cur < 100 || cur < lastScroll.current);
+      lastScroll.current = cur;
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  return (
+    <div style={{
+      position: 'fixed',
+      bottom: '24px',
+      right: '20px',
+      zIndex: 1050,
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '8px',
+      transform: visible ? 'translateY(0)' : 'translateY(100px)',
+      opacity: visible ? 1 : 0,
+      transition: 'transform 0.4s ease, opacity 0.4s ease',
+    }}>
+      {/* Label */}
+      <div style={{
+        textAlign: 'center',
+        fontFamily: "'Raleway', sans-serif",
+        fontSize: '0.52rem',
+        letterSpacing: '0.25em',
+        textTransform: 'uppercase',
+        color: 'rgba(61,43,31,0.45)',
+      }}>Language</div>
+
+      {/* Pill container */}
+      <div style={{
+        display: 'flex',
+        background: 'rgba(255,252,247,0.95)',
+        border: '1px solid rgba(201,150,58,0.25)',
+        borderRadius: '50px',
+        padding: '4px',
+        boxShadow: '0 4px 20px rgba(61,43,31,0.18), 0 1px 4px rgba(0,0,0,0.08)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+        gap: '4px',
+      }}>
+        {/* EN button */}
+        <button
+          onClick={() => setLang('en')}
+          title="Switch to English"
+          style={{
+            display: 'flex', alignItems: 'center', gap: '5px',
+            padding: '8px 14px',
+            borderRadius: '40px',
+            border: 'none',
+            background: lang === 'en'
+              ? 'linear-gradient(135deg, #C9963A, #A07520)'
+              : 'transparent',
+            color: lang === 'en' ? '#fff' : '#6B4A30',
+            fontFamily: "'Raleway', sans-serif",
+            fontSize: '0.7rem',
+            fontWeight: 600,
+            letterSpacing: '0.1em',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease',
+            whiteSpace: 'nowrap',
+            boxShadow: lang === 'en' ? '0 2px 8px rgba(201,150,58,0.35)' : 'none',
+          }}
+        >
+          <span style={{ fontSize: '1rem', lineHeight: 1 }}>🇰🇪</span>
+          <span>EN</span>
+        </button>
+
+        {/* DE button */}
+        <button
+          onClick={() => setLang('de')}
+          title="Auf Deutsch wechseln"
+          style={{
+            display: 'flex', alignItems: 'center', gap: '5px',
+            padding: '8px 14px',
+            borderRadius: '40px',
+            border: 'none',
+            background: lang === 'de'
+              ? 'linear-gradient(135deg, #C9963A, #A07520)'
+              : 'transparent',
+            color: lang === 'de' ? '#fff' : '#6B4A30',
+            fontFamily: "'Raleway', sans-serif",
+            fontSize: '0.7rem',
+            fontWeight: 600,
+            letterSpacing: '0.1em',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease',
+            whiteSpace: 'nowrap',
+            boxShadow: lang === 'de' ? '0 2px 8px rgba(201,150,58,0.35)' : 'none',
+          }}
+        >
+          <span style={{ fontSize: '1rem', lineHeight: 1 }}>🇩🇪</span>
+          <span>DE</span>
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// ── Inner app ──
 function AppInner() {
   useScrollReveal();
-
   return (
     <>
       <Cursor />
+      <LangSwitcher />
       <Navbar />
       <Hero />
       <OurStory />
@@ -90,7 +197,7 @@ export default function App() {
       <Loader onDone={() => setLoaded(true)} />
       <div style={{
         opacity: loaded ? 1 : 0,
-        transition: 'opacity 0.6s ease 0.2s',
+        transition: 'opacity 0.8s ease 0.2s',
         visibility: loaded ? 'visible' : 'hidden',
       }}>
         <AppInner />

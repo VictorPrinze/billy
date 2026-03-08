@@ -89,7 +89,7 @@ export function Gallery() {
                   }}
                 >
                   <img
-                    src={`/src/assets/images/${p.file}`}
+                    src={`/images/${p.file}`}
                     alt={p.label}
                     style={{ width:'100%', height:'100%', objectFit:'cover', display:'block', transition:'transform 0.6s ease', transform: hovered===idx ? 'scale(1.06)' : 'scale(1)' }}
                   />
@@ -134,7 +134,7 @@ export function Gallery() {
                   position:'relative', overflow:'hidden', cursor:'pointer',
                 }}
               >
-                <img src={`/src/assets/images/${p.file}`} alt={p.label}
+                <img src={`/images/${p.file}`} alt={p.label}
                   style={{ width:'100%', height:'100%', objectFit:'cover', display:'block' }} />
                 <div style={{ position:'absolute', inset:0, background:'linear-gradient(to top,rgba(20,8,2,0.5),transparent)', display:'flex', alignItems:'flex-end', padding:'0.8rem' }}>
                   <span style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.62rem', color:'rgba(253,248,235,0.9)', letterSpacing:'0.1em' }}>{p.label}</span>
@@ -201,7 +201,7 @@ export function Gallery() {
           {/* Main image */}
           <div style={{ maxWidth:'min(90vw,900px)', maxHeight:'80vh', position:'relative', animation:'lbScaleIn 0.3s ease' }}>
             <img
-              src={`/src/assets/images/${ALL_PHOTOS[lightbox].file}`}
+              src={`/images/${ALL_PHOTOS[lightbox].file}`}
               alt={ALL_PHOTOS[lightbox].label}
               style={{ maxWidth:'100%', maxHeight:'78vh', objectFit:'contain', display:'block', boxShadow:'0 24px 80px rgba(0,0,0,0.6)' }}
             />
@@ -300,7 +300,7 @@ export function RSVP() {
 
   if (submitted) return (
     <section id="rsvp" style={{ position:'relative', overflow:'hidden', minHeight:'60vh', display:'flex', alignItems:'center' }}>
-      <div style={{ position:'absolute', inset:0, backgroundImage:'url(/src/assets/images/DSC05433.JPG)', backgroundSize:'cover', backgroundPosition:'center' }}/>
+      <div style={{ position:'absolute', inset:0, backgroundImage:'url(/images/DSC05433.JPG)', backgroundSize:'cover', backgroundPosition:'center' }}/>
       <div style={{ position:'absolute', inset:0, background:'rgba(20,8,2,0.82)' }}/>
       <div style={{ maxWidth:'600px', margin:'0 auto', padding:'clamp(4rem,10vw,8rem) 24px', textAlign:'center', boxSizing:'border-box', position:'relative', zIndex:1 }}>
         <div style={{ fontSize:'3.5rem', marginBottom:'1rem', animation:'scaleIn 0.6s ease' }}>✦</div>
@@ -327,7 +327,7 @@ export function RSVP() {
   return (
     <section id="rsvp" style={{ position:'relative', overflow:'hidden' }}>
       {/* Photo background */}
-      <div style={{ position:'absolute', inset:0, backgroundImage:'url(/src/assets/images/DSC05281.JPG)', backgroundSize:'cover', backgroundPosition:'center top' }}/>
+      <div style={{ position:'absolute', inset:0, backgroundImage:'url(/images/DSC05281.JPG)', backgroundSize:'cover', backgroundPosition:'center top' }}/>
       <div style={{ position:'absolute', inset:0, background:'linear-gradient(105deg, rgba(20,8,2,0.88) 0%, rgba(20,8,2,0.75) 50%, rgba(20,8,2,0.55) 100%)' }}/>
 
       <div style={{ maxWidth:'1150px', margin:'0 auto', padding:'clamp(3.5rem,8vw,7rem) clamp(16px,4vw,48px)', boxSizing:'border-box', position:'relative', zIndex:1 }}>
@@ -505,7 +505,7 @@ export function Footer() {
   return (
     <footer style={{ position:'relative', overflow:'hidden' }}>
       {/* Photo background */}
-      <div style={{ position:'absolute', inset:0, backgroundImage:'url(/src/assets/images/DSC05467.JPG)', backgroundSize:'cover', backgroundPosition:'center' }}/>
+      <div style={{ position:'absolute', inset:0, backgroundImage:'url(/images/DSC05467.JPG)', backgroundSize:'cover', backgroundPosition:'center' }}/>
       <div style={{ position:'absolute', inset:0, background:'rgba(10,4,1,0.9)' }}/>
 
       <div style={{ position:'relative', zIndex:1, maxWidth:'960px', margin:'0 auto', padding:'clamp(3.5rem,7vw,6rem) clamp(16px,4vw,40px) clamp(1.5rem,3vw,2.5rem)', textAlign:'center', boxSizing:'border-box' }}>

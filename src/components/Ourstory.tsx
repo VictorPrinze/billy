@@ -51,7 +51,7 @@ export default function OurStory() {
                 position:'relative',
               }}>
                 <img
-                  src={`/src/assets/images/${photo}`}
+                  src={`/images/${photo}`}
                   alt="Billy and Sarah"
                   style={{ width:'100%', height:'100%', objectFit:'cover', display:'block' }}
                 />
@@ -119,7 +119,7 @@ export default function OurStory() {
             <div className="reveal-right" style={{ position:'relative' }}>
               <div style={{ position:'relative', overflow:'hidden' }}>
                 <img
-                  src="/src/assets/images/DSC05415.JPG"
+                  src="/images/DSC05415.JPG"
                   alt="Billy and Sarah"
                   style={{ width:'100%', height:'clamp(300px,45vw,520px)', objectFit:'cover', display:'block' }}
                 />

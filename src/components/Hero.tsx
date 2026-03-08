@@ -72,7 +72,7 @@ export default function Hero() {
       {HERO_PHOTOS.map((photo, i) => (
         <div key={photo} style={{
           position:'absolute', inset:'-10%',
-          backgroundImage: `url(/src/assets/images/${photo})`,
+          backgroundImage: `url(/images/${photo})`,
           backgroundSize:'cover', backgroundPosition:'center',
           transform:`translateY(${i === slideIdx ? parallaxY : 0}px)`,
           opacity: i === slideIdx ? 1 : (i === prevIdx && transitioning ? 1 : 0),

@@ -4,7 +4,7 @@ import { useScrollReveal } from './components/Usescrollreveal';
 import Loader from './components/Loader';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import OurStory from './components/Ourstory';
+import OurStory from './components/OurStory';
 import EventSection from './components/EventSection';
 import Travel from './components/Travel';
 import { Gallery, RSVP, Footer } from './components/Sections';

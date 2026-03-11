@@ -3,15 +3,15 @@ import { useState } from 'react';
 import { useLang } from './Langcontext';
 
 const ALL_PHOTOS = [
-  { file:'DSC05281.JPG', label:'Billy & Sarah',     caption:{ en:'Together always', de:'Immer zusammen' } },
-  { file:'DSC05285.JPG', label:'Our Engagement',    caption:{ en:'He asked, she said yes', de:'Er fragte, sie sagte Ja' } },
-  { file:'DSC05402.JPG', label:'In Love',           caption:{ en:'Two hearts, one soul', de:'Zwei Herzen, eine Seele' } },
-  { file:'DSC05411.JPG', label:'Special Moment',    caption:{ en:'A moment frozen in time', de:'Ein unvergesslicher Moment' } },
-  { file:'DSC05415.JPG', label:'The Proposal',      caption:{ en:'The beginning of forever', de:'Der Beginn der Ewigkeit' } },
-  { file:'DSC05433.JPG', label:'Pure Joy',          caption:{ en:'Happiness looks like this', de:'So sieht Glück aus' } },
-  { file:'DSC05442.JPG', label:'Our Journey',       caption:{ en:'Every step together', de:'Jeden Schritt gemeinsam' } },
-  { file:'DSC05447.JPG', label:'Love Story',        caption:{ en:'Kenya meets Deutschland', de:'Kenia trifft Deutschland' } },
-  { file:'DSC05467.JPG', label:'Forever',           caption:{ en:'And so the adventure begins', de:'Das Abenteuer beginnt' } },
+  { file:'dsc05281.jpg',  label:'Billy & Sarah',   caption:{ en:'Together always',           de:'Immer zusammen' } },
+  { file:'dsc05402.jpg',  label:'In Love',          caption:{ en:'Two hearts, one soul',      de:'Zwei Herzen, eine Seele' } },
+  { file:'dsc05411.jpg',  label:'Special Moment',   caption:{ en:'A moment frozen in time',   de:'Ein unvergesslicher Moment' } },
+  { file:'dsc05415.jpg',  label:'The Proposal',     caption:{ en:'The beginning of forever',  de:'Der Beginn der Ewigkeit' } },
+  { file:'dsc05433.jpg',  label:'Pure Joy',         caption:{ en:'Happiness looks like this', de:'So sieht Glück aus' } },
+  { file:'dsc05442.jpg',  label:'Our Journey',      caption:{ en:'Every step together',       de:'Jeden Schritt gemeinsam' } },
+  { file:'image (3).jpg', label:'Kenya × Germany',  caption:{ en:'Two worlds, one love',      de:'Zwei Welten, eine Liebe' } },
+  { file:'image (5).jpg', label:'Love Story',       caption:{ en:'Our beautiful story',       de:'Unsere schöne Geschichte' } },
+  { file:'image (8).jpg', label:'Forever',          caption:{ en:'And so it begins',          de:'Und so beginnt es' } },
 ];
 
 // Desktop masonry layout config (3 cols, varied heights)
@@ -300,7 +300,7 @@ export function RSVP() {
 
   if (submitted) return (
     <section id="rsvp" style={{ position:'relative', overflow:'hidden', minHeight:'60vh', display:'flex', alignItems:'center' }}>
-      <div style={{ position:'absolute', inset:0, backgroundImage:'url(/images/DSC05433.JPG)', backgroundSize:'cover', backgroundPosition:'center' }}/>
+      <div style={{ position:'absolute', inset:0, backgroundImage:'url(/images/dsc05417.jpg)', backgroundSize:'cover', backgroundPosition:'center' }}/>
       <div style={{ position:'absolute', inset:0, background:'rgba(20,8,2,0.82)' }}/>
       <div style={{ maxWidth:'600px', margin:'0 auto', padding:'clamp(4rem,10vw,8rem) 24px', textAlign:'center', boxSizing:'border-box', position:'relative', zIndex:1 }}>
         <div style={{ fontSize:'3.5rem', marginBottom:'1rem', animation:'scaleIn 0.6s ease' }}>✦</div>
@@ -327,7 +327,7 @@ export function RSVP() {
   return (
     <section id="rsvp" style={{ position:'relative', overflow:'hidden' }}>
       {/* Photo background */}
-      <div style={{ position:'absolute', inset:0, backgroundImage:'url(/images/DSC05281.JPG)', backgroundSize:'cover', backgroundPosition:'center top' }}/>
+      <div style={{ position:'absolute', inset:0, backgroundImage:'url(/images/dsc05466.jpg)', backgroundSize:'cover', backgroundPosition:'center top' }}/>
       <div style={{ position:'absolute', inset:0, background:'linear-gradient(105deg, rgba(20,8,2,0.88) 0%, rgba(20,8,2,0.75) 50%, rgba(20,8,2,0.55) 100%)' }}/>
 
       <div style={{ maxWidth:'1150px', margin:'0 auto', padding:'clamp(3.5rem,8vw,7rem) clamp(16px,4vw,48px)', boxSizing:'border-box', position:'relative', zIndex:1 }}>
@@ -505,7 +505,7 @@ export function Footer() {
   return (
     <footer style={{ position:'relative', overflow:'hidden' }}>
       {/* Photo background */}
-      <div style={{ position:'absolute', inset:0, backgroundImage:'url(/images/DSC05467.JPG)', backgroundSize:'cover', backgroundPosition:'center' }}/>
+      <div style={{ position:'absolute', inset:0, backgroundImage:'url(/images/dsc05406.jpg)', backgroundSize:'cover', backgroundPosition:'center' }}/>
       <div style={{ position:'absolute', inset:0, background:'rgba(10,4,1,0.9)' }}/>
 
       <div style={{ position:'relative', zIndex:1, maxWidth:'960px', margin:'0 auto', padding:'clamp(3.5rem,7vw,6rem) clamp(16px,4vw,40px) clamp(1.5rem,3vw,2.5rem)', textAlign:'center', boxSizing:'border-box' }}>

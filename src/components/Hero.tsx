@@ -1,13 +1,13 @@
 import { useEffect, useState, useRef } from 'react';
 import { useLang } from './Langcontext';
 
-// All 9 photos — hero cycles through them as a cinematic slideshow
+// Hero slideshow — best couple shots
 const HERO_PHOTOS = [
-  'DSC05281.JPG',
-  'DSC05402.JPG',
-  'DSC05415.JPG',
-  'DSC05433.JPG',
-  'DSC05447.JPG',
+  'dsc05415.jpg',
+  'dsc05433.jpg',
+  'image (3).jpg',
+  'dsc05417.jpg',
+  'image (5).jpg',
 ];
 
 export default function Hero() {

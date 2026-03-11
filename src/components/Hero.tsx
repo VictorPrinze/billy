@@ -1,13 +1,13 @@
 import { useEffect, useState, useRef } from 'react';
 import { useLang } from './Langcontext';
 
-// Hero slideshow — best couple shots
+// Hero slideshow — best couple shots (HD originals)
 const HERO_PHOTOS = [
-  'dsc05415.jpg',
-  'dsc05433.jpg',
-  'image (3).jpg',
-  'dsc05417.jpg',
-  'image (5).jpg',
+  'DSC05415.JPG',
+  'DSC05433.JPG',
+  'DSC05417.JPG',
+  'image (3).jpeg',
+  'image (5).jpeg',
 ];
 
 export default function Hero() {

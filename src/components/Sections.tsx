@@ -3,28 +3,48 @@ import { useState } from 'react';
 import { useLang } from './Langcontext';
 
 const ALL_PHOTOS = [
-  { file:'dsc05281.jpg',  label:'Billy & Sarah',   caption:{ en:'Together always',           de:'Immer zusammen' } },
-  { file:'dsc05402.jpg',  label:'In Love',          caption:{ en:'Two hearts, one soul',      de:'Zwei Herzen, eine Seele' } },
-  { file:'dsc05411.jpg',  label:'Special Moment',   caption:{ en:'A moment frozen in time',   de:'Ein unvergesslicher Moment' } },
-  { file:'dsc05415.jpg',  label:'The Proposal',     caption:{ en:'The beginning of forever',  de:'Der Beginn der Ewigkeit' } },
-  { file:'dsc05433.jpg',  label:'Pure Joy',         caption:{ en:'Happiness looks like this', de:'So sieht Glück aus' } },
-  { file:'dsc05442.jpg',  label:'Our Journey',      caption:{ en:'Every step together',       de:'Jeden Schritt gemeinsam' } },
-  { file:'image (3).jpg', label:'Kenya × Germany',  caption:{ en:'Two worlds, one love',      de:'Zwei Welten, eine Liebe' } },
-  { file:'image (5).jpg', label:'Love Story',       caption:{ en:'Our beautiful story',       de:'Unsere schöne Geschichte' } },
-  { file:'image (8).jpg', label:'Forever',          caption:{ en:'And so it begins',          de:'Und so beginnt es' } },
+  { file:'DSC05281.JPG', label:'Billy & Sarah',     caption:{ en:'Together always',           de:'Immer zusammen' } },
+  { file:'DSC05285.JPG', label:'Our Story',         caption:{ en:'Where it all began',         de:'Wo alles begann' } },
+  { file:'DSC05402.JPG', label:'In Love',           caption:{ en:'Two hearts, one soul',       de:'Zwei Herzen, eine Seele' } },
+  { file:'DSC05406.JPG', label:'Pure Joy',          caption:{ en:'Happiness looks like this',  de:'So sieht Glück aus' } },
+  { file:'DSC05411.JPG', label:'Special Moment',    caption:{ en:'A moment frozen in time',    de:'Ein unvergesslicher Moment' } },
+  { file:'DSC05415.JPG', label:'The Proposal',      caption:{ en:'The beginning of forever',   de:'Der Beginn der Ewigkeit' } },
+  { file:'DSC05417.JPG', label:'Just Us',           caption:{ en:'You and me, always',         de:'Du und ich, immer' } },
+  { file:'DSC05433.JPG', label:'Our Engagement',    caption:{ en:'He asked, she said yes 😊',  de:'Er fragte, sie sagte Ja 😊' } },
+  { file:'DSC05442.JPG', label:'Our Journey',       caption:{ en:'Every step together',        de:'Jeden Schritt gemeinsam' } },
+  { file:'DSC05443.JPG', label:'Love Story',        caption:{ en:'Kenya meets Deutschland',    de:'Kenia trifft Deutschland' } },
+  { file:'DSC05447.JPG', label:'Together',          caption:{ en:'Side by side forever',       de:'Seite an Seite für immer' } },
+  { file:'DSC05466.JPG', label:'Forever',           caption:{ en:'And so the adventure begins',de:'Das Abenteuer beginnt' } },
+  { file:'image (1).jpeg', label:'Sweet Moments',  caption:{ en:'Every moment with you',      de:'Jeder Moment mit dir' } },
+  { file:'image (2).jpeg', label:'Beautiful Day',  caption:{ en:'Days like these',            de:'Solche Tage' } },
+  { file:'image (3).jpeg', label:'Our Light',      caption:{ en:'You are my sunshine',        de:'Du bist mein Sonnenschein' } },
+  { file:'image (4).jpeg', label:'Bliss',          caption:{ en:'Pure happiness',             de:'Reines Glück' } },
+  { file:'image (5).jpeg', label:'My Person',      caption:{ en:'Found my person',            de:'Mein Mensch gefunden' } },
+  { file:'image (7).jpeg', label:'Close to You',   caption:{ en:'Home is wherever you are',   de:'Zuhause ist, wo du bist' } },
+  { file:'image (8).jpeg', label:'Love',           caption:{ en:'This is love',               de:'Das ist Liebe' } },
 ];
 
-// Desktop masonry layout config (3 cols, varied heights)
+// Desktop masonry layout — 19 photos, 3 cols, varied heights
 const MASONRY = [
-  { idx:0, col:'1', row:'span 2' }, // tall left
-  { idx:1, col:'2', row:'span 1' }, // normal middle top
-  { idx:2, col:'3', row:'span 2' }, // tall right
-  { idx:3, col:'2', row:'span 1' }, // normal middle bottom
-  { idx:4, col:'1', row:'span 1' }, // normal left
-  { idx:5, col:'3', row:'span 1' }, // normal right
-  { idx:6, col:'1 / span 2', row:'span 1' }, // wide bottom-left
-  { idx:7, col:'3', row:'span 1' }, // normal bottom-right
-  { idx:8, col:'1 / span 3', row:'span 1' }, // full-width panoramic
+  { idx:0,  col:'1',        row:'span 2' }, // tall
+  { idx:1,  col:'2',        row:'span 1' },
+  { idx:2,  col:'3',        row:'span 2' }, // tall
+  { idx:3,  col:'2',        row:'span 1' },
+  { idx:4,  col:'1',        row:'span 1' },
+  { idx:5,  col:'3',        row:'span 1' },
+  { idx:6,  col:'1 / span 2', row:'span 1' }, // wide
+  { idx:7,  col:'3',        row:'span 1' },
+  { idx:8,  col:'1',        row:'span 1' },
+  { idx:9,  col:'2',        row:'span 2' }, // tall
+  { idx:10, col:'3',        row:'span 1' },
+  { idx:11, col:'1',        row:'span 1' },
+  { idx:12, col:'3',        row:'span 1' },
+  { idx:13, col:'1 / span 3', row:'span 1' }, // full width panoramic
+  { idx:14, col:'1',        row:'span 2' }, // tall
+  { idx:15, col:'2',        row:'span 1' },
+  { idx:16, col:'3',        row:'span 2' }, // tall
+  { idx:17, col:'2',        row:'span 1' },
+  { idx:18, col:'1 / span 1', row:'span 1' },
 ];
 
 export function Gallery() {
@@ -300,7 +320,7 @@ export function RSVP() {
 
   if (submitted) return (
     <section id="rsvp" style={{ position:'relative', overflow:'hidden', minHeight:'60vh', display:'flex', alignItems:'center' }}>
-      <div style={{ position:'absolute', inset:0, backgroundImage:'url(/images/dsc05417.jpg)', backgroundSize:'cover', backgroundPosition:'center' }}/>
+      <div style={{ position:'absolute', inset:0, backgroundImage:'url(/images/DSC05417.JPG)', backgroundSize:'cover', backgroundPosition:'center' }}/>
       <div style={{ position:'absolute', inset:0, background:'rgba(20,8,2,0.82)' }}/>
       <div style={{ maxWidth:'600px', margin:'0 auto', padding:'clamp(4rem,10vw,8rem) 24px', textAlign:'center', boxSizing:'border-box', position:'relative', zIndex:1 }}>
         <div style={{ fontSize:'3.5rem', marginBottom:'1rem', animation:'scaleIn 0.6s ease' }}>✦</div>
@@ -327,7 +347,7 @@ export function RSVP() {
   return (
     <section id="rsvp" style={{ position:'relative', overflow:'hidden' }}>
       {/* Photo background */}
-      <div style={{ position:'absolute', inset:0, backgroundImage:'url(/images/dsc05466.jpg)', backgroundSize:'cover', backgroundPosition:'center top' }}/>
+      <div style={{ position:'absolute', inset:0, backgroundImage:'url(/images/DSC05466.JPG)', backgroundSize:'cover', backgroundPosition:'center top' }}/>
       <div style={{ position:'absolute', inset:0, background:'linear-gradient(105deg, rgba(20,8,2,0.88) 0%, rgba(20,8,2,0.75) 50%, rgba(20,8,2,0.55) 100%)' }}/>
 
       <div style={{ maxWidth:'1150px', margin:'0 auto', padding:'clamp(3.5rem,8vw,7rem) clamp(16px,4vw,48px)', boxSizing:'border-box', position:'relative', zIndex:1 }}>
@@ -505,7 +525,7 @@ export function Footer() {
   return (
     <footer style={{ position:'relative', overflow:'hidden' }}>
       {/* Photo background */}
-      <div style={{ position:'absolute', inset:0, backgroundImage:'url(/images/dsc05406.jpg)', backgroundSize:'cover', backgroundPosition:'center' }}/>
+      <div style={{ position:'absolute', inset:0, backgroundImage:'url(/images/DSC05406.JPG)', backgroundSize:'cover', backgroundPosition:'center' }}/>
       <div style={{ position:'absolute', inset:0, background:'rgba(10,4,1,0.9)' }}/>
 
       <div style={{ position:'relative', zIndex:1, maxWidth:'960px', margin:'0 auto', padding:'clamp(3.5rem,7vw,6rem) clamp(16px,4vw,40px) clamp(1.5rem,3vw,2.5rem)', textAlign:'center', boxSizing:'border-box' }}>

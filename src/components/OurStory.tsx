@@ -2,11 +2,17 @@ import { useLang } from './Langcontext';
 
 // Photo strip images
 const STRIP_PHOTOS = [
-  'dsc05285.jpg',
-  'dsc05406.jpg',
-  'dsc05443.jpg',
-  'image (7).jpg',
-  'image (8).jpg',
+  'DSC05285.JPG',
+  'DSC05406.JPG',
+  'DSC05411.JPG',
+  'DSC05442.JPG',
+  'DSC05443.JPG',
+  'DSC05466.JPG',
+  'image (1).jpeg',
+  'image (2).jpeg',
+  'image (4).jpeg',
+  'image (7).jpeg',
+  'image (8).jpeg',
 ];
 
 export default function OurStory() {
@@ -25,9 +31,9 @@ export default function OurStory() {
   ];
 
   const timeline = [
-    { year:'2020', en:'Two worlds meet — Billy in Kenya, Sarah in Germany, connected by faith.', de:'Zwei Welten begegnen sich — Billy in Kenia, Sarah in Deutschland, verbunden durch den Glauben.' },
+    { year:'2022', en:'Two worlds meet — Billy in Kenya, Sarah in Germany, connected by faith and love.', de:'Zwei Welten begegnen sich — Billy in Kenia, Sarah in Deutschland, verbunden durch Glauben und Liebe.' },
     { year:'2022', en:'First meeting in person — a moment neither will ever forget.', de:'Erstes persönliches Treffen — ein unvergesslicher Moment.' },
-    { year:'2024', en:'He asked. She said yes. Two nations celebrated.', de:'Er fragte. Sie sagte Ja. Zwei Nationen feierten.' },
+    { year:'2025', en:'He asked. She said yes 😊  Two nations celebrated.', de:'Er fragte. Sie sagte Ja 😊  Zwei Nationen feierten.' },
     { year:'2026', en:'December 28 — two become one before God and family in Eldoret.', de:'28. Dezember — zwei werden eins vor Gott und Familie in Eldoret.' },
   ];
 
@@ -120,7 +126,7 @@ export default function OurStory() {
             <div className="reveal-right" style={{ position:'relative' }}>
               <div style={{ position:'relative', overflow:'hidden' }}>
                 <img loading="lazy" decoding="async"
-                  src="/images/dsc05442.jpg"
+                  src="/images/DSC05442.JPG"
                   alt="Billy and Sarah"
                   style={{ width:'100%', height:'clamp(300px,45vw,520px)', objectFit:'cover', display:'block' }}
                 />

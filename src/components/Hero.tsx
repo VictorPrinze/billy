@@ -4,9 +4,9 @@ import { useLang } from './Langcontext';
 // All 9 photos — hero cycles through them as a cinematic slideshow
 const HERO_PHOTOS = [
   'DSC05281.JPG',
-  'DSC05467.JPG',
-  'DSC05417.JPG',
-  'DSC05358.JPG',
+  'DSC05402.JPG',
+  'DSC05415.JPG',
+  'DSC05433.JPG',
   'DSC05447.JPG',
 ];
 
@@ -73,6 +73,8 @@ export default function Hero() {
         <div key={photo} style={{
           position:'absolute', inset:'-10%',
           backgroundImage: `url(/images/${photo})`,
+          willChange: 'transform',
+          backfaceVisibility: 'hidden' as const,
           backgroundSize:'cover', backgroundPosition:'center',
           transform:`translateY(${i === slideIdx ? parallaxY : 0}px)`,
           opacity: i === slideIdx ? 1 : (i === prevIdx && transitioning ? 1 : 0),

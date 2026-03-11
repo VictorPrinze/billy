@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
-import { LangProvider, useLang } from './components/Langcontext';
-import { useScrollReveal } from './components/Usescrollreveal';
+import { LangProvider, useLang } from './LangContext';
+import { useScrollReveal } from './useScrollReveal';
 import Loader from './components/Loader';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import OurStory from './components/Ourstory';
+import OurStory from './components/OurStory';
 import EventSection from './components/EventSection';
 import Travel from './components/Travel';
 import { Gallery, RSVP, Footer } from './components/Sections';

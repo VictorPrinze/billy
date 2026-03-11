@@ -88,7 +88,7 @@ export function Gallery() {
                     boxShadow: hovered===idx ? '0 16px 48px rgba(92,61,34,0.22)' : '0 2px 8px rgba(92,61,34,0.08)',
                   }}
                 >
-                  <img
+                  <img loading="lazy" decoding="async"
                     src={`/images/${p.file}`}
                     alt={p.label}
                     style={{ width:'100%', height:'100%', objectFit:'cover', display:'block', transition:'transform 0.6s ease', transform: hovered===idx ? 'scale(1.06)' : 'scale(1)' }}
@@ -134,7 +134,7 @@ export function Gallery() {
                   position:'relative', overflow:'hidden', cursor:'pointer',
                 }}
               >
-                <img src={`/images/${p.file}`} alt={p.label}
+                <img loading="lazy" decoding="async" src={`/images/${p.file}`} alt={p.label}
                   style={{ width:'100%', height:'100%', objectFit:'cover', display:'block' }} />
                 <div style={{ position:'absolute', inset:0, background:'linear-gradient(to top,rgba(20,8,2,0.5),transparent)', display:'flex', alignItems:'flex-end', padding:'0.8rem' }}>
                   <span style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.62rem', color:'rgba(253,248,235,0.9)', letterSpacing:'0.1em' }}>{p.label}</span>
@@ -200,7 +200,7 @@ export function Gallery() {
 
           {/* Main image */}
           <div style={{ maxWidth:'min(90vw,900px)', maxHeight:'80vh', position:'relative', animation:'lbScaleIn 0.3s ease' }}>
-            <img
+            <img loading="lazy" decoding="async"
               src={`/images/${ALL_PHOTOS[lightbox].file}`}
               alt={ALL_PHOTOS[lightbox].label}
               style={{ maxWidth:'100%', maxHeight:'78vh', objectFit:'contain', display:'block', boxShadow:'0 24px 80px rgba(0,0,0,0.6)' }}

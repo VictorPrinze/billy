@@ -50,7 +50,7 @@ export default function OurStory() {
                 flexShrink:0, overflow:'hidden',
                 position:'relative',
               }}>
-                <img
+                <img loading="lazy" decoding="async"
                   src={`/images/${photo}`}
                   alt="Billy and Sarah"
                   style={{ width:'100%', height:'100%', objectFit:'cover', display:'block' }}
@@ -118,7 +118,7 @@ export default function OurStory() {
             {/* Feature photo */}
             <div className="reveal-right" style={{ position:'relative' }}>
               <div style={{ position:'relative', overflow:'hidden' }}>
-                <img
+                <img loading="lazy" decoding="async"
                   src="/images/DSC05415.JPG"
                   alt="Billy and Sarah"
                   style={{ width:'100%', height:'clamp(300px,45vw,520px)', objectFit:'cover', display:'block' }}

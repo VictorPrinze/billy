@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { LangProvider, useLang } from './LangContext';
-import { useScrollReveal } from './useScrollReveal';
+import { LangProvider, useLang } from './components/Langcontext';
+import { useScrollReveal } from './components/Usescrollreveal';
 import Loader from './components/Loader';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';

@@ -1,6 +1,6 @@
 // ─── Gallery ────────────────────────────────────────────────────────────────
 import { useState } from 'react';
-import { useLang } from '../LangContext';
+import { useLang } from './Langcontext';
 
 const ALL_PHOTOS = [
   { file:'DSC05281.JPG',  label:'Billy & Sarah',   caption:{ en:'Together always',           de:'Immer zusammen' } },

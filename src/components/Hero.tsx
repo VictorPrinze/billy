@@ -1,13 +1,12 @@
 import { useEffect, useState, useRef } from 'react';
 import { useLang } from './Langcontext';
 
-// Hero slideshow — best couple shots (HD originals)
 const HERO_PHOTOS = [
   'DSC05415.JPG',
   'DSC05433.JPG',
   'DSC05417.JPG',
-  'image (3).jpeg',
-  'image (5).jpeg',
+  'DSC05281.JPG',
+  'DSC05447.JPG',
 ];
 
 export default function Hero() {
@@ -17,7 +16,23 @@ export default function Hero() {
   const [slideIdx, setSlideIdx] = useState(0);
   const [prevIdx, setPrevIdx] = useState<number|null>(null);
   const [transitioning, setTransitioning] = useState(false);
+  const [loaded, setLoaded] = useState<boolean[]>(HERO_PHOTOS.map(() => false));
   const heroRef = useRef<HTMLElement>(null);
+
+  // ── Preload ALL hero images immediately on mount ──
+  useEffect(() => {
+    HERO_PHOTOS.forEach((photo, i) => {
+      const img = new Image();
+      img.src = `/images/${photo}`;
+      img.onload = () => {
+        setLoaded(prev => {
+          const next = [...prev];
+          next[i] = true;
+          return next;
+        });
+      };
+    });
+  }, []);
 
   // Countdown
   useEffect(() => {
@@ -41,8 +56,9 @@ export default function Hero() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Auto-slide every 5s
+  // Auto-slide every 6s — only starts once first image is loaded
   useEffect(() => {
+    if (!loaded[0]) return;
     const id = setInterval(() => {
       setPrevIdx(slideIdx);
       setTransitioning(true);
@@ -50,10 +66,10 @@ export default function Hero() {
         setSlideIdx(i => (i + 1) % HERO_PHOTOS.length);
         setTransitioning(false);
         setPrevIdx(null);
-      }, 900);
-    }, 5000);
+      }, 1000);
+    }, 6000);
     return () => clearInterval(id);
-  }, [slideIdx]);
+  }, [slideIdx, loaded[0]]);
 
   const countItems = [
     { v: timeLeft.days,    en:'Days',    de:'Tage' },
@@ -66,26 +82,33 @@ export default function Hero() {
     <section id="home" ref={heroRef} style={{
       width:'100%', minHeight:'100vh', position:'relative',
       display:'flex', alignItems:'center', justifyContent:'center',
-      overflow:'hidden',
+      overflow:'hidden', background:'#1a0a02',
     }}>
       {/* ── Sliding photo backgrounds ── */}
       {HERO_PHOTOS.map((photo, i) => (
         <div key={photo} style={{
           position:'absolute', inset:'-10%',
-          backgroundImage: `url(/images/${photo})`,
-          willChange: 'transform',
-          backfaceVisibility: 'hidden' as const,
+          backgroundImage: loaded[i] ? `url(/images/${photo})` : 'none',
           backgroundSize:'cover', backgroundPosition:'center',
           transform:`translateY(${i === slideIdx ? parallaxY : 0}px)`,
-          opacity: i === slideIdx ? 1 : (i === prevIdx && transitioning ? 1 : 0),
-          transition: i === slideIdx
-            ? 'opacity 1s ease'
-            : (i === prevIdx && transitioning ? 'opacity 0.9s ease' : 'none'),
+          opacity: i === slideIdx && loaded[i] ? 1 : (i === prevIdx && transitioning ? 1 : 0),
+          transition: 'opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1)',
           zIndex: i === slideIdx ? 1 : (i === prevIdx ? 0 : -1),
+          willChange: 'opacity, transform',
         }} />
       ))}
 
-      {/* Deep cinematic overlay — lighter than before */}
+      {/* Loading shimmer — shows while first image loads */}
+      <div style={{
+        position:'absolute', inset:0, zIndex:0,
+        background:'linear-gradient(135deg, #1a0a02 0%, #2d1506 50%, #1a0a02 100%)',
+        backgroundSize:'400% 400%',
+        animation: loaded[0] ? 'none' : 'shimmer 2s ease infinite',
+        opacity: loaded[0] ? 0 : 1,
+        transition:'opacity 1s ease',
+      }}/>
+
+      {/* Deep cinematic overlay */}
       <div style={{
         position:'absolute', inset:0, zIndex:2,
         background:`
@@ -97,13 +120,13 @@ export default function Hero() {
           )`,
       }} />
 
-      {/* Vignette sides */}
+      {/* Vignette */}
       <div style={{
         position:'absolute', inset:0, zIndex:2, pointerEvents:'none',
         background:'radial-gradient(ellipse 120% 100% at 50% 50%, transparent 40%, rgba(15,6,1,0.4) 100%)',
       }} />
 
-      {/* Dual flag strip — top */}
+      {/* Flag strip top */}
       <div style={{
         position:'absolute', top:0, left:0, right:0,
         display:'flex', height:'4px', zIndex:4,
@@ -141,13 +164,13 @@ export default function Hero() {
         ))}
       </div>
 
-      {/* ── Content ── */}
+      {/* Content */}
       <div style={{
         width:'100%', maxWidth:'820px', margin:'0 auto',
         padding:'110px clamp(20px,5vw,48px) 100px',
         textAlign:'center', position:'relative', zIndex:3, boxSizing:'border-box',
       }}>
-        {/* Flags + cultural label */}
+        {/* Flags */}
         <div style={{ display:'flex', alignItems:'center', justifyContent:'center', gap:'0.7rem', marginBottom:'1.4rem', animation:'hFadeUp 0.8s ease 0.3s both' }}>
           <span style={{ fontSize:'1.4rem' }}>🇰🇪</span>
           <div style={{ width:'28px', height:'1px', background:'rgba(212,160,67,0.5)' }}/>
@@ -192,7 +215,7 @@ export default function Hero() {
         {/* Verse */}
         <div style={{ margin:'1.6rem auto 0', maxWidth:'430px', padding:'1rem 1.5rem', border:'1px solid rgba(212,160,67,0.2)', background:'rgba(253,248,235,0.07)', backdropFilter:'blur(4px)', animation:'hFadeUp 0.8s ease 1.1s both' }}>
           <p style={{ fontFamily:"'Cormorant Garamond',serif", fontStyle:'italic', color:'rgba(253,248,235,0.8)', fontSize:'0.95rem', lineHeight:1.75, margin:0 }}>
-            {t('"Every good and perfect gift is from above."', '"Jede gute Gabe kommt von oben."')}
+            {t('"Every good and perfect gift is from above."', '"Jede gute Gabe kommt von oben."' )}
           </p>
           <p style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.6rem', letterSpacing:'0.2em', color:'rgba(212,160,67,0.7)', margin:'0.4rem 0 0' }}>— {t('James 1:17','Jakobus 1,17')}</p>
         </div>
@@ -222,8 +245,9 @@ export default function Hero() {
             transition:'all 0.3s', display:'inline-block',
           }}
           onMouseEnter={e=>{e.currentTarget.style.transform='translateY(-2px)';e.currentTarget.style.boxShadow='0 8px 32px rgba(212,160,67,0.55)';}}
-          onMouseLeave={e=>{e.currentTarget.style.transform='none';e.currentTarget.style.boxShadow='0 4px 24px rgba(212,160,67,0.4)';}}
-          >{t('RSVP Now','Jetzt zusagen')}</a>
+          onMouseLeave={e=>{e.currentTarget.style.transform='none';e.currentTarget.style.boxShadow='0 4px 24px rgba(212,160,67,0.4)';}}>
+            {t('RSVP Now','Jetzt zusagen')}
+          </a>
           <a href="#travel" style={{
             padding:'0.9rem 2.5rem',
             border:'1px solid rgba(212,160,67,0.6)',
@@ -234,8 +258,9 @@ export default function Hero() {
             transition:'all 0.3s', display:'inline-block',
           }}
           onMouseEnter={e=>{e.currentTarget.style.background='rgba(212,160,67,0.18)';e.currentTarget.style.transform='translateY(-2px)';}}
-          onMouseLeave={e=>{e.currentTarget.style.background='rgba(253,248,235,0.08)';e.currentTarget.style.transform='none';}}
-          >{t('Travel Guide','Anreise')}</a>
+          onMouseLeave={e=>{e.currentTarget.style.background='rgba(253,248,235,0.08)';e.currentTarget.style.transform='none';}}>
+            {t('Travel Guide','Anreise')}
+          </a>
         </div>
       </div>
 
@@ -249,6 +274,11 @@ export default function Hero() {
         @keyframes hFadeUp { from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none} }
         @keyframes hFadeIn { from{opacity:0}to{opacity:1} }
         @keyframes hFloat  { 0%,100%{transform:translateY(0)}50%{transform:translateY(10px)} }
+        @keyframes shimmer {
+          0%   { background-position: 0% 50%; }
+          50%  { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
       `}</style>
     </section>
   );

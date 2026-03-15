@@ -8,11 +8,13 @@ const STRIP_PHOTOS = [
   'DSC05442.JPG',
   'DSC05443.JPG',
   'DSC05466.JPG',
-  'image (1).jpeg',
-  'image (2).jpeg',
-  'image (4).jpeg',
-  'image (7).jpeg',
-  'image (8).jpeg',
+  'image1.JPG',
+  'image2.JPG',
+  'image3.JPG',
+  'image4.JPG',
+  'image5.JPG',
+  'image7.JPG',
+  'image8.JPG',
 ];
 
 export default function OurStory() {

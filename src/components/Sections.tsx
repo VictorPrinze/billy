@@ -1,6 +1,6 @@
 // ─── Gallery ────────────────────────────────────────────────────────────────
 import { useState } from 'react';
-import { useLang } from './Langcontext';
+import { useLang } from '../LangContext';
 
 const ALL_PHOTOS = [
   { file:'DSC05281.JPG',  label:'Billy & Sarah',   caption:{ en:'Together always',           de:'Immer zusammen' } },
@@ -282,6 +282,7 @@ export function Gallery() {
 // ─── RSVP ────────────────────────────────────────────────────────────────────
 import { useState as useStateRSVP } from 'react';
 import type { CSSProperties } from 'react';
+import { submitRSVP } from '../lib/supabase';
 
 const iStyle: CSSProperties = {
   width:'100%', padding:'0.85rem 1.1rem',
@@ -309,13 +310,39 @@ export function RSVP() {
     setErrors(p=>({...p,[name]:''}));
   };
 
-  const submit = () => {
+  const submit = async () => {
     const errs: Record<string,string> = {};
     if (!form.name.trim())  errs.name = t('Required','Pflichtfeld');
     if (!form.email.trim()) errs.email = t('Required','Pflichtfeld');
     if (!form.attendance)   errs.attendance = t('Required','Pflichtfeld');
     if (Object.keys(errs).length) { setErrors(errs); return; }
-    setSubmitted(true);
+
+    try {
+      // Save to Supabase
+      await submitRSVP({
+        name:       form.name,
+        email:      form.email,
+        phone:      form.phone,
+        guests:     parseInt(form.guests) || 1,
+        attendance: form.attendance,
+        meal:       form.meal,
+        language:   form.language,
+        message:    form.message,
+      });
+
+      // WhatsApp notification — opens pre-filled message to Billy/Sarah
+      const waNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '254794262715';
+      if (waNumber) {
+        const emoji   = form.attendance === 'yes' ? '🎉' : form.attendance === 'no' ? '😔' : '🤔';
+        const msg     = `New RSVP ${emoji}%0A*${form.name}*%0AAttending: ${form.attendance}%0AGuests: ${form.guests}%0AMeal: ${form.meal || 'not specified'}%0AEmail: ${form.email}${form.phone ? '%0APhone: ' + form.phone : ''}${form.message ? '%0AMessage: ' + form.message : ''}`;
+        window.open(`https://wa.me/${waNumber}?text=${msg}`, '_blank');
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      console.error('RSVP submission failed:', err);
+      alert(t('Something went wrong. Please try again.', 'Etwas ist schiefgelaufen. Bitte versuche es erneut.'));
+    }
   };
 
   if (submitted) return (

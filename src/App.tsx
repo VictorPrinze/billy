@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { LangProvider, useLang } from './components/Langcontext';
-import { useScrollReveal } from './components/Usescrollreveal';
+import { LangProvider, useLang } from './LangContext';
+import { useScrollReveal } from './useScrollReveal';
 import Loader from './components/Loader';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -8,6 +8,7 @@ import OurStory from './components/OurStory';
 import EventSection from './components/EventSection';
 import Travel from './components/Travel';
 import { Gallery, RSVP, Footer } from './components/Sections';
+import Admin from './components/Admin';
 
 // ── Subtle cursor — tiny dot only, mix-blend-mode so it never covers text ──
 function Cursor() {
@@ -191,6 +192,10 @@ function AppInner() {
 
 export default function App() {
   const [loaded, setLoaded] = useState(false);
+
+  // Simple client-side routing — /admin shows dashboard, everything else shows site
+  const isAdmin = window.location.pathname === '/admin';
+  if (isAdmin) return <Admin />;
 
   return (
     <LangProvider>

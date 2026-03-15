@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState,  } from 'react';
 import { getAllRSVPs, deleteRSVP, type RSVPEntry } from '../lib/supabase';
 
 const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || 'billysarah2026';

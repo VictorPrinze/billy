@@ -19,6 +19,7 @@ function StatCard({ label, value, color }: { label: string; value: number | stri
 export default function Admin() {
   const [authed, setAuthed]       = useState(false);
   const [pw, setPw]               = useState('');
+  const [showPw, setShowPw]       = useState(false);
   const [pwError, setPwError]     = useState(false);
   const [rsvps, setRsvps]         = useState<RSVPEntry[]>([]);
   const [loading, setLoading]     = useState(false);
@@ -97,6 +98,7 @@ export default function Admin() {
       minHeight: '100vh', background: '#FFFCF5',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
       fontFamily: "'Raleway', sans-serif",
+      cursor: 'default',
     }}>
       <div style={{
         background: '#fff', padding: '3rem', width: '360px',
@@ -111,22 +113,38 @@ export default function Admin() {
           RSVP Admin
         </p>
 
-        <input
-          type="password"
-          placeholder="Enter admin password"
-          value={pw}
-          onChange={e => setPw(e.target.value)}
-          onKeyDown={e => e.key === 'Enter' && login()}
-          style={{
-            width: '100%', padding: '0.85rem 1rem',
-            border: `1px solid ${pwError ? '#BB0000' : 'rgba(92,61,34,0.2)'}`,
-            fontFamily: "'Raleway', sans-serif", fontSize: '0.9rem',
-            outline: 'none', boxSizing: 'border-box', borderRadius: 0,
-            animation: pwError ? 'shake 0.4s ease' : 'none',
-            background: pwError ? '#fff5f5' : '#fff',
-            transition: 'border-color 0.3s, background 0.3s',
-          }}
-        />
+        <div style={{ position:'relative' }}>
+          <input
+            type={showPw ? 'text' : 'password'}
+            placeholder="Enter admin password"
+            value={pw}
+            onChange={e => setPw(e.target.value)}
+            onKeyDown={e => e.key === 'Enter' && login()}
+            style={{
+              width: '100%', padding: '0.85rem 3rem 0.85rem 1rem',
+              border: `1px solid ${pwError ? '#BB0000' : 'rgba(92,61,34,0.2)'}`,
+              fontFamily: "'Raleway', sans-serif", fontSize: '0.9rem',
+              outline: 'none', boxSizing: 'border-box', borderRadius: 0,
+              animation: pwError ? 'shake 0.4s ease' : 'none',
+              background: pwError ? '#fff5f5' : '#fff',
+              transition: 'border-color 0.3s, background 0.3s',
+            }}
+          />
+          <button
+            onClick={() => setShowPw(p => !p)}
+            style={{
+              position:'absolute', right:'10px', top:'50%', transform:'translateY(-50%)',
+              background:'none', border:'none', cursor:'pointer',
+              color:'rgba(92,61,34,0.45)', fontSize:'1rem', padding:'4px',
+              transition:'color 0.2s', lineHeight:1,
+            }}
+            onMouseEnter={e => e.currentTarget.style.color = '#D4A043'}
+            onMouseLeave={e => e.currentTarget.style.color = 'rgba(92,61,34,0.45)'}
+            title={showPw ? 'Hide password' : 'Show password'}
+          >
+            {showPw ? '🙈' : '👁️'}
+          </button>
+        </div>
         {pwError && (
           <p style={{ color: '#BB0000', fontSize: '0.72rem', margin: '0.4rem 0 0', textAlign: 'left' }}>
             Incorrect password
@@ -153,7 +171,7 @@ export default function Admin() {
 
   // ── Dashboard ──
   return (
-    <div style={{ minHeight: '100vh', background: '#F8F4EE', fontFamily: "'Raleway', sans-serif" }}>
+    <div style={{ minHeight: '100vh', background: '#F8F4EE', fontFamily: "'Raleway', sans-serif", cursor: 'default' }}>
 
       {/* Header */}
       <div style={{ background: '#5C3D22', padding: '1.2rem 2rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>

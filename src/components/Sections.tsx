@@ -330,14 +330,6 @@ export function RSVP() {
         message:    form.message,
       });
 
-      // WhatsApp notification — opens pre-filled message to Billy/Sarah
-      const waNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '254794262715';
-      if (waNumber) {
-        const emoji   = form.attendance === 'yes' ? '🎉' : form.attendance === 'no' ? '😔' : '🤔';
-        const msg     = `New RSVP ${emoji}%0A*${form.name}*%0AAttending: ${form.attendance}%0AGuests: ${form.guests}%0AMeal: ${form.meal || 'not specified'}%0AEmail: ${form.email}${form.phone ? '%0APhone: ' + form.phone : ''}${form.message ? '%0AMessage: ' + form.message : ''}`;
-        window.open(`https://wa.me/${waNumber}?text=${msg}`, '_blank');
-      }
-
       setSubmitted(true);
     } catch (err) {
       console.error('RSVP submission failed:', err);

@@ -195,7 +195,7 @@ export default function App() {
 
   // Simple client-side routing — /admin shows dashboard, everything else shows site
   const isAdmin = window.location.pathname === '/admin';
-  if (isAdmin) return <Admin />;
+  if (isAdmin) return <Admin />;  // Cursor not rendered here — Admin handles its own cursor
 
   return (
     <LangProvider>

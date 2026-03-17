@@ -4,9 +4,9 @@ import { useLang } from './Langcontext';
 // WebP versions for speed + tiny blur thumbs for instant placeholder
 type HeroPhoto = { webp: string; thumb: string; pos: string; };
 const HERO_PHOTOS: HeroPhoto[] = [
-  { webp: '/images/webp/DSC05417.webp', thumb: '/images/thumbs/DSC05415-thumb.webp', pos: '50% 20%' },
+  { webp: '/images/webp/DSC05415.webp', thumb: '/images/thumbs/DSC05415-thumb.webp', pos: '50% 20%' },
   { webp: '/images/webp/DSC05433.webp', thumb: '/images/thumbs/DSC05433-thumb.webp', pos: '50% 15%' },
-  { webp: '/images/webp/DSC05466.webp', thumb: '/images/thumbs/DSC05449-thumb.webp', pos: 'top' },
+  { webp: '/images/webp/DSC05466.webp', thumb: '/images/thumbs/DSC05466-thumb.webp', pos: 'top' },
   { webp: '/images/webp/DSC05417.webp', thumb: '/images/thumbs/DSC05417-thumb.webp', pos: 'top' },
   { webp: '/images/webp/DSC05281.webp', thumb: '/images/thumbs/DSC05281-thumb.webp', pos: 'center' },
 ];

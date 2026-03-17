@@ -2,12 +2,13 @@ import { useEffect, useState, useRef } from 'react';
 import { useLang } from './Langcontext';
 
 // WebP versions for speed + tiny blur thumbs for instant placeholder
-const HERO_PHOTOS = [
-  { webp: '/images/webp/DSC05415.webp', thumb: '/images/thumbs/DSC05415-thumb.webp' },
-  { webp: '/images/webp/DSC05433.webp', thumb: '/images/thumbs/DSC05433-thumb.webp' },
-  { webp: '/images/webp/DSC05449.webp', thumb: '/images/thumbs/DSC05449-thumb.webp' },
-  { webp: '/images/webp/DSC05417.webp', thumb: '/images/thumbs/DSC05417-thumb.webp' },
-  { webp: '/images/webp/DSC05281.webp', thumb: '/images/thumbs/DSC05281-thumb.webp' },
+type HeroPhoto = { webp: string; thumb: string; pos: string; };
+const HERO_PHOTOS: HeroPhoto[] = [
+  { webp: '/images/webp/DSC05415.webp', thumb: '/images/thumbs/DSC05415-thumb.webp', pos: '50% 20%' },
+  { webp: '/images/webp/DSC05433.webp', thumb: '/images/thumbs/DSC05433-thumb.webp', pos: '50% 15%' },
+  { webp: '/images/webp/DSC05449.webp', thumb: '/images/thumbs/DSC05449-thumb.webp', pos: 'top' },
+  { webp: '/images/webp/DSC05417.webp', thumb: '/images/thumbs/DSC05417-thumb.webp', pos: 'top' },
+  { webp: '/images/webp/DSC05281.webp', thumb: '/images/thumbs/DSC05281-thumb.webp', pos: 'center' },
 ];
 
 export default function Hero() {
@@ -104,7 +105,7 @@ export default function Hero() {
           <div style={{
             position:'absolute', inset:0,
             backgroundImage:`url(${photo.thumb})`,
-            backgroundSize:'cover', backgroundPosition:'center',
+            backgroundSize:'cover', backgroundPosition:photo.pos,
             filter:'blur(20px)', transform:'scale(1.1)',
             opacity: loaded[i] ? 0 : 1,
             transition:'opacity 0.8s ease',
@@ -113,7 +114,7 @@ export default function Hero() {
           <div style={{
             position:'absolute', inset:0,
             backgroundImage: loaded[i] ? `url(${photo.webp})` : 'none',
-            backgroundSize:'cover', backgroundPosition:'center',
+            backgroundSize:'cover', backgroundPosition:photo.pos,
             opacity: loaded[i] ? 1 : 0,
             transition:'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
           }}/>

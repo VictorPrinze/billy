@@ -1,7 +1,7 @@
 // ─── Gallery ────────────────────────────────────────────────────────────────
 import { useState } from 'react';
 import { useLang } from './Langcontext';
-import ProgressiveImage, { getWebPPaths } from './Progressiveimage';
+import ProgressiveImage, { getWebPPaths, PHOTO_POSITIONS } from './Progressiveimage';
 
 const ALL_PHOTOS = [
   { file:'DSC05281.JPG',  label:'Billy & Sarah',   caption:{ en:'Together always',           de:'Immer zusammen' } },
@@ -112,6 +112,7 @@ export function Gallery() {
                   <ProgressiveImage
                     {...getWebPPaths(p.file)}
                     alt={p.label}
+                    position={PHOTO_POSITIONS[p.file] || 'center'}
                     style={{
                       width:'100%', height:'100%',
                       transition:'transform 0.6s ease',
@@ -162,6 +163,7 @@ export function Gallery() {
                 <ProgressiveImage
                   {...getWebPPaths(p.file)}
                   alt={p.label}
+                  position={PHOTO_POSITIONS[p.file] || 'center'}
                   style={{ width:'100%', height:'100%' }}
                 />
                 <div style={{ position:'absolute', inset:0, background:'linear-gradient(to top,rgba(20,8,2,0.5),transparent)', display:'flex', alignItems:'flex-end', padding:'0.8rem' }}>

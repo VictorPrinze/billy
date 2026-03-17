@@ -1,5 +1,5 @@
 import { useLang } from './Langcontext';
-import ProgressiveImage, { getWebPPaths } from './Progressiveimage';
+import ProgressiveImage, { getWebPPaths, PHOTO_POSITIONS } from './Progressiveimage';
 
 // Photo strip images
 const STRIP_PHOTOS = [
@@ -64,6 +64,7 @@ export default function OurStory() {
                 <ProgressiveImage
                   {...getWebPPaths(photo)}
                   alt="Billy and Sarah"
+                  position={PHOTO_POSITIONS[photo] || 'center'}
                   style={{ width:'100%', height:'100%' }}
                 />
                 {/* Light warm overlay */}
@@ -132,6 +133,7 @@ export default function OurStory() {
                 <ProgressiveImage
                   {...getWebPPaths('DSC05442.JPG')}
                   alt="Billy and Sarah"
+                  position={PHOTO_POSITIONS['DSC05442.JPG'] || 'center'}
                   style={{ width:'100%', height:'clamp(300px,45vw,520px)' }}
                 />
                 {/* Gold corner frame */}

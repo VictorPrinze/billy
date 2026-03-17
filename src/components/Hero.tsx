@@ -1,12 +1,13 @@
 import { useEffect, useState, useRef } from 'react';
 import { useLang } from './Langcontext';
 
+// WebP versions for speed + tiny blur thumbs for instant placeholder
 const HERO_PHOTOS = [
-  'DSC05415.JPG',
-  'DSC05433.JPG',
-  'DSC05417.JPG',
-  'DSC05281.JPG',
-  'DSC05447.JPG',
+  { webp: '/images/webp/DSC05415.webp', thumb: '/images/thumbs/DSC05415-thumb.webp' },
+  { webp: '/images/webp/DSC05433.webp', thumb: '/images/thumbs/DSC05433-thumb.webp' },
+  { webp: '/images/webp/DSC05449.webp', thumb: '/images/thumbs/DSC05449-thumb.webp' },
+  { webp: '/images/webp/DSC05417.webp', thumb: '/images/thumbs/DSC05417-thumb.webp' },
+  { webp: '/images/webp/DSC05281.webp', thumb: '/images/thumbs/DSC05281-thumb.webp' },
 ];
 
 export default function Hero() {
@@ -22,8 +23,13 @@ export default function Hero() {
   // ── Preload ALL hero images immediately on mount ──
   useEffect(() => {
     HERO_PHOTOS.forEach((photo, i) => {
+      // Preload thumb first (tiny, near-instant)
+      const thumb = new Image();
+      thumb.src = photo.thumb;
+
+      // Then preload full WebP
       const img = new Image();
-      img.src = `/images/${photo}`;
+      img.src = photo.webp;
       img.onload = () => {
         setLoaded(prev => {
           const next = [...prev];
@@ -86,16 +92,32 @@ export default function Hero() {
     }}>
       {/* ── Sliding photo backgrounds ── */}
       {HERO_PHOTOS.map((photo, i) => (
-        <div key={photo} style={{
+        <div key={photo.webp} style={{
           position:'absolute', inset:'-10%',
-          backgroundImage: loaded[i] ? `url(/images/${photo})` : 'none',
-          backgroundSize:'cover', backgroundPosition:'center',
           transform:`translateY(${i === slideIdx ? parallaxY : 0}px)`,
-          opacity: i === slideIdx && loaded[i] ? 1 : (i === prevIdx && transitioning ? 1 : 0),
+          opacity: i === slideIdx ? 1 : (i === prevIdx && transitioning ? 1 : 0),
           transition: 'opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1)',
           zIndex: i === slideIdx ? 1 : (i === prevIdx ? 0 : -1),
           willChange: 'opacity, transform',
-        }} />
+        }}>
+          {/* Blur placeholder — shows instantly from tiny thumb */}
+          <div style={{
+            position:'absolute', inset:0,
+            backgroundImage:`url(${photo.thumb})`,
+            backgroundSize:'cover', backgroundPosition:'center',
+            filter:'blur(20px)', transform:'scale(1.1)',
+            opacity: loaded[i] ? 0 : 1,
+            transition:'opacity 0.8s ease',
+          }}/>
+          {/* Full WebP — fades in over blur when loaded */}
+          <div style={{
+            position:'absolute', inset:0,
+            backgroundImage: loaded[i] ? `url(${photo.webp})` : 'none',
+            backgroundSize:'cover', backgroundPosition:'center',
+            opacity: loaded[i] ? 1 : 0,
+            transition:'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+          }}/>
+        </div>
       ))}
 
       {/* Loading shimmer — shows while first image loads */}

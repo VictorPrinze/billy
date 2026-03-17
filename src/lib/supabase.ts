@@ -1,9 +1,17 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl  = import.meta.env.VITE_SUPABASE_URL  as string;
-const supabaseKey  = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string;
+const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
 
-export const supabase = createClient(supabaseUrl, supabaseKey);
+// Only create client if keys exist — prevents crash on local dev
+const isConfigured = supabaseUrl && 
+  supabaseUrl !== 'PASTE_YOUR_PROJECT_URL_HERE' && 
+  supabaseKey && 
+  supabaseKey !== 'PASTE_YOUR_ANON_KEY_HERE';
+
+export const supabase = isConfigured 
+  ? createClient(supabaseUrl, supabaseKey)
+  : null;
 
 export interface RSVPEntry {
   id?:         string;
@@ -19,11 +27,17 @@ export interface RSVPEntry {
 }
 
 export async function submitRSVP(data: RSVPEntry) {
+  if (!supabase) {
+    // Dev mode — just log it, don't crash
+    console.log('📋 RSVP submitted (Supabase not configured):', data);
+    return;
+  }
   const { error } = await supabase.from('rsvp').insert([data]);
   if (error) throw error;
 }
 
-export async function getAllRSVPs() {
+export async function getAllRSVPs(): Promise<RSVPEntry[]> {
+  if (!supabase) return [];
   const { data, error } = await supabase
     .from('rsvp')
     .select('*')
@@ -33,6 +47,9 @@ export async function getAllRSVPs() {
 }
 
 export async function deleteRSVP(id: string) {
+  if (!supabase) return;
   const { error } = await supabase.from('rsvp').delete().eq('id', id);
   if (error) throw error;
 }
+
+export { isConfigured };

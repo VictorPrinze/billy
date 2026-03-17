@@ -1,5 +1,5 @@
 import { useState,  } from 'react';
-import { getAllRSVPs, deleteRSVP, type RSVPEntry } from '../lib/supabase';
+import { getAllRSVPs, deleteRSVP, isConfigured, type RSVPEntry } from '../lib/supabase';
 
 const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || 'billysarah2026';
 
@@ -203,6 +203,19 @@ export default function Admin() {
       </div>
 
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '2rem clamp(1rem,3vw,2rem)' }}>
+
+        {/* Supabase not configured warning */}
+        {!isConfigured && (
+          <div style={{ background:'#FFF8E1', border:'1px solid #F9A825', padding:'1rem 1.5rem', marginBottom:'1.5rem', display:'flex', alignItems:'center', gap:'1rem' }}>
+            <span style={{ fontSize:'1.3rem' }}>⚠️</span>
+            <div>
+              <div style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.82rem', fontWeight:600, color:'#5C3D00' }}>Supabase not connected yet</div>
+              <div style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.75rem', color:'#8B6000', marginTop:'0.2rem' }}>
+                Add <code style={{background:'rgba(0,0,0,0.08)',padding:'1px 6px'}}>VITE_SUPABASE_URL</code> and <code style={{background:'rgba(0,0,0,0.08)',padding:'1px 6px'}}>VITE_SUPABASE_ANON_KEY</code> to your <code style={{background:'rgba(0,0,0,0.08)',padding:'1px 6px'}}>.env</code> file to see RSVPs here.
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Stats */}
         <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '2rem' }}>

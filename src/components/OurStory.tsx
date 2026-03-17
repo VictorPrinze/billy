@@ -1,4 +1,5 @@
 import { useLang } from './Langcontext';
+import ProgressiveImage, { getWebPPaths } from './Progressiveimage';
 
 // Photo strip images
 const STRIP_PHOTOS = [
@@ -7,6 +8,7 @@ const STRIP_PHOTOS = [
   'DSC05411.JPG',
   'DSC05442.JPG',
   'DSC05443.JPG',
+  'DSC05449.JPG',
   'DSC05466.JPG',
   'image1.JPG',
   'image2.JPG',
@@ -59,10 +61,10 @@ export default function OurStory() {
                 flexShrink:0, overflow:'hidden',
                 position:'relative',
               }}>
-                <img loading="lazy" decoding="async"
-                  src={`/images/${photo}`}
+                <ProgressiveImage
+                  {...getWebPPaths(photo)}
                   alt="Billy and Sarah"
-                  style={{ width:'100%', height:'100%', objectFit:'cover', display:'block' }}
+                  style={{ width:'100%', height:'100%' }}
                 />
                 {/* Light warm overlay */}
                 <div style={{ position:'absolute', inset:0, background:'rgba(255,248,235,0.08)' }}/>
@@ -127,10 +129,10 @@ export default function OurStory() {
             {/* Feature photo */}
             <div className="reveal-right" style={{ position:'relative' }}>
               <div style={{ position:'relative', overflow:'hidden' }}>
-                <img loading="lazy" decoding="async"
-                  src="/images/DSC05442.JPG"
+                <ProgressiveImage
+                  {...getWebPPaths('DSC05442.JPG')}
                   alt="Billy and Sarah"
-                  style={{ width:'100%', height:'clamp(300px,45vw,520px)', objectFit:'cover', display:'block' }}
+                  style={{ width:'100%', height:'clamp(300px,45vw,520px)' }}
                 />
                 {/* Gold corner frame */}
                 <div style={{ position:'absolute', top:'12px', left:'12px', width:'40px', height:'40px', borderTop:'2px solid rgba(212,160,67,0.7)', borderLeft:'2px solid rgba(212,160,67,0.7)' }}/>

@@ -6,6 +6,7 @@ type HeroPhoto = { webp: string; thumb: string; pos: string; };
 const HERO_PHOTOS: HeroPhoto[] = [
   { webp: '/images/webp/DSC05415.webp', thumb: '/images/thumbs/DSC05415-thumb.webp', pos: '50% 20%' },
   { webp: '/images/webp/DSC05433.webp', thumb: '/images/thumbs/DSC05433-thumb.webp', pos: '50% 15%' },
+    { webp: '/images/webp/DSC05285.webp', thumb: '/images/thumbs/DSC05285-thumb.webp', pos: '50% 15%' },
   { webp: '/images/webp/image8.webp', thumb: '/images/thumbs/image8-thumb.webp', pos: 'center' },
   { webp: '/images/webp/DSC05417.webp', thumb: '/images/thumbs/DSC05417-thumb.webp', pos: 'top' },
   { webp: '/images/webp/DSC05281.webp', thumb: '/images/thumbs/DSC05281-thumb.webp', pos: 'center' },

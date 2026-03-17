@@ -3,10 +3,8 @@ import ProgressiveImage, { getWebPPaths, PHOTO_POSITIONS } from './Progressiveim
 
 // Photo strip images
 const STRIP_PHOTOS = [
-  'DSC05285.JPG',
-  'DSC05406.JPG',
+  'DSC05402.JPG',
   'DSC05411.JPG',
-  'DSC05442.JPG',
   'DSC05443.JPG',
   'DSC05449.JPG',
   'DSC05466.JPG',
@@ -15,7 +13,6 @@ const STRIP_PHOTOS = [
   'image3.JPG',
   'image4.JPG',
   'image5.JPG',
-  'image7.JPG',
   'image8.JPG',
 ];
 

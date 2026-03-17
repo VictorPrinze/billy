@@ -82,25 +82,28 @@ export default function ProgressiveImage({ src, thumb, alt, style, className, po
 // 'center' = default, good for landscapes and wide shots
 // '50% 20%' = custom fine-tuning
 export const PHOTO_POSITIONS: Record<string, string> = {
-  'DSC05281.JPG': 'center',
-  'DSC05285.JPG': 'top',
-  'DSC05402.JPG': 'center',
-  'DSC05406.JPG': 'top',
-  'DSC05411.JPG': 'top',
-  'DSC05415.JPG': '50% 20%',
-  'DSC05417.JPG': 'top',
-  'DSC05433.JPG': '50% 15%',  // this one was getting cut — focus higher
-  'DSC05442.JPG': 'center',
-  'DSC05443.JPG': 'top',
-  'DSC05449.JPG': 'top',
-  'DSC05466.JPG': 'center',
-  'image1.JPG':   'center',
-  'image2.JPG':   'center',
-  'image3.JPG':   'top',
-  'image4.JPG':   'center',
-  'image5.JPG':   'top',
-  'image7.JPG':   'center',
-  'image8.JPG':   'center',
+  // ── DSC series ──
+  'DSC05281.JPG': '50% 30%',   // couple portrait — keep faces
+  'DSC05285.JPG': '50% 80%',   // looking up through flowers — faces at bottom
+  'DSC05402.JPG': 'center',    // landscape/mountain — center fine
+  'DSC05406.JPG': '50% 25%',   // portrait — keep faces high
+  'DSC05411.JPG': '50% 25%',   // portrait — keep faces high
+  'DSC05415.JPG': '50% 20%',   // portrait — keep faces high
+  'DSC05417.JPG': '50% 25%',   // portrait — keep faces high
+  'DSC05433.JPG': '50% 20%',   // portrait — keep faces high
+  'DSC05442.JPG': 'center',    // landscape/wide shot
+  'DSC05443.JPG': '50% 25%',   // portrait — keep faces high
+  'DSC05449.JPG': '50% 25%',   // portrait — keep faces high
+  'DSC05466.JPG': 'center',    // landscape wide shot
+
+  // ── image series ──
+  'image1.JPG':   '50% 25%',   // portrait couple
+  'image2.JPG':   '50% 20%',   // portrait couple
+  'image3.JPG':   '50% 15%',   // bench photo — faces at top, torso was showing
+  'image4.JPG':   '50% 20%',   // portrait
+  'image5.JPG':   '50% 15%',   // suit/dress — heads at top, was cropped at chest
+  'image7.JPG':   '50% 20%',   // portrait couple
+  'image8.JPG':   '50% 20%',   // portrait couple
 };
 
 export function getWebPPaths(filename: string) {

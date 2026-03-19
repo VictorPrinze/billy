@@ -7,46 +7,46 @@ export default function EventSection() {
 
   const days = [
     {
-      label:   { en:'Church Service', de:'Kirchliche Trauung' },
+      label:   { en:'Church Service', de:'Kirchliche Trauung', sw:'Ibada ya Kanisa' },
       date:    '28 · XII · 2026',
       time:    '10:00 AM',
       icon:    '⛪',
       color:   '#C9963A',
       schedule:[
-        { time:'8:30 AM',  en:'Arrival & Photo Session',   de:'Ankunft & Fototermin',   sub:{ en:'Bridal team & close family', de:'Brautteam & enge Familie' } },
-        { time:'10:00 AM', en:'Groom Enters',              de:'Einzug des Bräutigams',  sub:{ en:'Opening prayer & Praise', de:'Eröffnungsgebet & Lobpreis' } },
-        { time:'10:15 AM', en:'Bride Entrance',            de:'Einzug der Braut',       sub:{ en:'The moment we\'ve waited for', de:'Der Moment, auf den wir gewartet haben' } },
-        { time:'10:30 AM', en:'Sermon',                    de:'Predigt',                sub:{ en:'Message & exchanging of vows', de:'Botschaft & Eheversprechen' } },
-        { time:'12:30 PM', en:'Closing Prayer',            de:'Abschlussgebet',         sub:{ en:'Photo session & lunch', de:'Fototermin & Mittagessen' } },
+        { time:'8:30 AM',  en:'Arrival & Photo Session',   de:'Ankunft & Fototermin',   sw:'Kuwasili & Picha',        sub:{ en:'Bridal team & close family', de:'Brautteam & enge Familie', sw:'Timu ya bibi arusi & familia ya karibu' } },
+        { time:'10:00 AM', en:'Groom Enters',              de:'Einzug des Bräutigams',  sw:'Bwana Arusi Aingia',      sub:{ en:'Opening prayer & Praise', de:'Eröffnungsgebet & Lobpreis', sw:'Sala ya ufunguzi & Sifa' } },
+        { time:'10:15 AM', en:'Bride Entrance',            de:'Einzug der Braut',       sw:'Bibi Arusi Aingia',       sub:{ en:'The moment we\'ve waited for', de:'Der Moment, auf den wir gewartet haben', sw:'Wakati tuliousubiri' } },
+        { time:'10:30 AM', en:'Sermon',                    de:'Predigt',                sw:'Mahubiri',                sub:{ en:'Message & exchanging of vows', de:'Botschaft & Eheversprechen', sw:'Ujumbe & Kubadilishana Ahadi' } },
+        { time:'12:30 PM', en:'Closing Prayer',            de:'Abschlussgebet',         sw:'Sala ya Kufunga',         sub:{ en:'Photo session & lunch', de:'Fototermin & Mittagessen', sw:'Picha & Chakula cha mchana' } },
       ],
     },
     {
-      label:   { en:'Reception', de:'Empfang' },
+      label:   { en:'Reception', de:'Empfang', sw:'Mapokezi' },
       date:    '28 · XII · 2026',
       time:    '2:00 PM',
       icon:    '🥂',
       color:   '#BE0027',
       schedule:[
-        { time:'2:00 PM',  en:'Grand Entrance',       de:'Großer Einzug',       sub:{ en:'Opening prayer & introductions', de:'Eröffnungsgebet & Vorstellungen' } },
-        { time:'2:30 PM',  en:'Speeches',             de:'Reden',               sub:{ en:'Family & friends speak', de:'Familie & Freunde sprechen' } },
-        { time:'3:00 PM',  en:'Cake Cutting & Gifts', de:'Torte & Geschenke',   sub:{ en:'Sweet celebrations', de:'Süße Feierlichkeiten' } },
-        { time:'3:20 PM',  en:'Vote of Thanks',       de:'Dankesworte',         sub:{ en:'Asanteni Sana', de:'Herzlichen Dank' } },
-        { time:'3:30 PM',  en:'Closing Prayer',       de:'Abschlussgebet',      sub:{ en:'Guests depart', de:'Gäste gehen' } },
+        { time:'2:00 PM',  en:'Grand Entrance',       de:'Großer Einzug',       sw:'Kuingia kwa Fahari',  sub:{ en:'Opening prayer & introductions', de:'Eröffnungsgebet & Vorstellungen', sw:'Sala ya ufunguzi & utambulisho' } },
+        { time:'2:30 PM',  en:'Speeches',             de:'Reden',               sw:'Hotuba',              sub:{ en:'Family & friends speak', de:'Familie & Freunde sprechen', sw:'Familia & marafiki wanazungumza' } },
+        { time:'3:00 PM',  en:'Cake Cutting & Gifts', de:'Torte & Geschenke',   sw:'Keki & Zawadi',       sub:{ en:'Sweet celebrations', de:'Süße Feierlichkeiten', sw:'Sherehe tamu' } },
+        { time:'3:20 PM',  en:'Vote of Thanks',       de:'Dankesworte',         sw:'Shukrani',            sub:{ en:'Asanteni Sana', de:'Herzlichen Dank', sw:'Asanteni Sana' } },
+        { time:'3:30 PM',  en:'Closing Prayer',       de:'Abschlussgebet',      sw:'Sala ya Kufunga',     sub:{ en:'Guests depart', de:'Gäste gehen', sw:'Wageni wanaondoka' } },
       ],
     },
     {
-      label:   { en:'Evening Dinner', de:'Abendessen' },
+      label:   { en:'Evening Dinner', de:'Abendessen', sw:'Chakula cha Jioni' },
       date:    '28 · XII · 2026',
       time:    '6:00 PM',
       icon:    '🌙',
       color:   '#2D4A2D',
-      note:    { en:'German guests automatically invited', de:'Deutsche Gäste automatisch eingeladen' },
+      note:    { en:'German guests automatically invited', de:'Deutsche Gäste automatisch eingeladen', sw:'Wageni wa Ujerumani wanaalikwa moja kwa moja' },
       schedule:[
-        { time:'6:00 PM',  en:'Welcome & Prayer',    de:'Willkommen & Gebet',  sub:{ en:'Opening ceremony', de:'Eröffnungsfeier' } },
-        { time:'6:30 PM',  en:'Guest Introductions', de:'Gästevorstellungen',  sub:{ en:'Meet the families', de:'Familien kennenlernen' } },
-        { time:'7:00 PM',  en:'Supper & Activities', de:'Abendessen & Spiele', sub:{ en:'Eat, dance, celebrate', de:'Essen, tanzen, feiern' } },
-        { time:'9:00 PM',  en:'Wedding Dance',       de:'Hochzeitstanz',       sub:{ en:'The floor is yours', de:'Die Tanzfläche gehört euch' } },
-        { time:'10:00 PM', en:'Closing Prayer',      de:'Abschlussgebet',      sub:{ en:'Mungu Ni Mwema', de:'Mungu Ni Mwema (Gott ist gut)' } },
+        { time:'6:00 PM',  en:'Welcome & Prayer',    de:'Willkommen & Gebet',  sw:'Karibu & Sala',       sub:{ en:'Opening ceremony', de:'Eröffnungsfeier', sw:'Sherehe ya ufunguzi' } },
+        { time:'6:30 PM',  en:'Guest Introductions', de:'Gästevorstellungen',  sw:'Utambulisho wa Wageni', sub:{ en:'Meet the families', de:'Familien kennenlernen', sw:'Kutana na familia' } },
+        { time:'7:00 PM',  en:'Supper & Activities', de:'Abendessen & Spiele', sw:'Chakula & Shughuli',   sub:{ en:'Eat, dance, celebrate', de:'Essen, tanzen, feiern', sw:'Kula, cheza, sherehekea' } },
+        { time:'9:00 PM',  en:'Wedding Dance',       de:'Hochzeitstanz',       sw:'Dansi ya Harusi',     sub:{ en:'The floor is yours', de:'Die Tanzfläche gehört euch', sw:'Sakafu ni yako' } },
+        { time:'10:00 PM', en:'Closing Prayer',      de:'Abschlussgebet',      sw:'Sala ya Kufunga',     sub:{ en:'Mungu Ni Mwema', de:'Mungu Ni Mwema (Gott ist gut)', sw:'Mungu Ni Mwema' } },
       ],
     },
   ];
@@ -58,10 +58,10 @@ export default function EventSection() {
         {/* Header */}
         <div className="reveal" style={{ textAlign:'center', marginBottom:'clamp(2rem,5vw,3.5rem)' }}>
           <span style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.68rem', letterSpacing:'0.45em', textTransform:'uppercase', color:'#C9963A', display:'block', marginBottom:'0.6rem' }}>
-            {t('The Big Day', 'Der große Tag')}
+            {t('The Big Day', 'Der große Tag', 'Siku Yetu')}
           </span>
           <h2 style={{ fontFamily:"'Playfair Display',serif", fontSize:'clamp(2rem,5vw,3.8rem)', fontWeight:400, color:'#3D2B1F', margin:'0 0 0.5rem' }}>
-            {t('Order of the Day', 'Programm')}
+            {t('Order of the Day', 'Programm', 'Mpangilio wa Siku')}
           </h2>
           <div style={{ display:'flex', alignItems:'center', justifyContent:'center', gap:'0.8rem', margin:'1rem 0 1.2rem' }}>
             <div style={{ width:'60px', height:'1px', background:'linear-gradient(90deg,transparent,#C9963A)' }} />
@@ -75,7 +75,7 @@ export default function EventSection() {
             </span>
             <span style={{ color:'rgba(201,150,58,0.3)' }}>|</span>
             <span style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.7rem', letterSpacing:'0.22em', textTransform:'uppercase', color:'rgba(245,239,230,0.75)' }}>
-              {t('28 December 2026', '28. Dezember 2026')}
+              {t('28 December 2026', '28. Dezember 2026', '28 Desemba 2026')}
             </span>
           </div>
         </div>
@@ -98,7 +98,7 @@ export default function EventSection() {
             onMouseLeave={e => { if(activeDay!==i) { e.currentTarget.style.background='transparent'; } }}
             >
               <span>{day.icon}</span>
-              <span>{lang==='en' ? day.label.en : day.label.de}</span>
+              <span>{lang==='sw' ? day.label.sw : lang==='de' ? day.label.de : day.label.en}</span>
             </button>
           ))}
         </div>
@@ -113,22 +113,22 @@ export default function EventSection() {
                 <div style={{ background:'#3D2B1F', padding:'2rem', color:'#F5EFE6' }}>
                   <div style={{ fontSize:'3rem', marginBottom:'0.8rem' }}>{day.icon}</div>
                   <h3 style={{ fontFamily:"'Playfair Display',serif", fontSize:'1.6rem', fontWeight:400, margin:'0 0 0.3rem' }}>
-                    {lang==='en' ? day.label.en : day.label.de}
+                    {lang==='sw' ? day.label.sw : lang==='de' ? day.label.de : day.label.en}
                   </h3>
                   <p style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.7rem', letterSpacing:'0.2em', color:'rgba(201,150,58,0.8)', textTransform:'uppercase', margin:'0 0 1.5rem' }}>
                     {day.date} · {day.time}
                   </p>
                   <div style={{ width:'40px', height:'2px', background:day.color, marginBottom:'1.5rem' }} />
                   <p style={{ fontFamily:"'Cormorant Garamond',serif", fontStyle:'italic', fontSize:'1.05rem', color:'rgba(245,239,230,0.7)', lineHeight:1.75, margin:0 }}>
-                    {t('"Love is patient, love is kind… Love never fails."', '"Die Liebe ist geduldig und freundlich… Die Liebe hört niemals auf."')}
+                    {t('"Love is patient, love is kind… Love never fails."', '"Die Liebe ist geduldig und freundlich… Die Liebe hört niemals auf."', '"Upendo huvumilia, upendo wema… Upendo haupotei kamwe."')}
                     <br/>
                     <span style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.62rem', letterSpacing:'0.15em', fontStyle:'normal', color:'rgba(201,150,58,0.65)' }}>
-                      — 1 {t('Corinthians', 'Korinther')} 13
+                      — 1 {t('Corinthians', 'Korinther', 'Wakorintho')} 13
                     </span>
                   </p>
                   {day.note && (
                     <div style={{ marginTop:'1.5rem', padding:'0.8rem 1rem', background:'rgba(201,150,58,0.1)', border:'1px solid rgba(201,150,58,0.2)', fontFamily:"'Raleway',sans-serif", fontSize:'0.72rem', color:'rgba(201,150,58,0.85)', lineHeight:1.6 }}>
-                      ⭐ {lang==='en' ? day.note.en : day.note.de}
+                      ⭐ {lang==='sw' ? day.note.sw : lang==='de' ? day.note.de : day.note.en}
                     </div>
                   )}
                 </div>
@@ -149,10 +149,10 @@ export default function EventSection() {
                       {/* Event */}
                       <div style={{ flex:1, paddingBottom:'0.2rem' }}>
                         <div style={{ fontFamily:"'Playfair Display',serif", fontSize:'1rem', color:'#3D2B1F', fontWeight:500, lineHeight:1.2 }}>
-                          {lang==='en' ? item.en : item.de}
+                          {lang==='sw' ? item.sw : lang==='de' ? item.de : item.en}
                         </div>
                         <div style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.75rem', color:'#9A7060', marginTop:'0.2rem', lineHeight:1.5 }}>
-                          {lang==='en' ? item.sub.en : item.sub.de}
+                          {lang==='sw' ? item.sub.sw : lang==='de' ? item.sub.de : item.sub.en}
                         </div>
                       </div>
                     </div>
@@ -166,17 +166,17 @@ export default function EventSection() {
         {/* Dress code strip */}
         <div className="reveal" style={{ marginTop:'clamp(2rem,5vw,3.5rem)', display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(min(100%,280px),1fr))', gap:'1px', background:'rgba(201,150,58,0.15)' }}>
           {[
-            { icon:'👔', label:{ en:'Wedding Attire', de:'Hochzeitskleidung' }, body:{ en:'Vibrant colors, bold styles. This is a joyful celebration — dress bright!', de:'Lebendige Farben, kühne Stile. Das ist eine freudige Feier — bunt anziehen!' } },
-            { icon:'🌍', label:{ en:'Cultural Dress Welcome', de:'Trachten willkommen' }, body:{ en:'Kenyan or German traditional attire is warmly welcomed and celebrated.', de:'Kenianische oder deutsche Tracht ist herzlich willkommen und wird gefeiert.' } },
-            { icon:'📿', label:{ en:'Look Your Best', de:'Im besten Look' }, body:{ en:'Come looking radiant — this is a once-in-a-lifetime day for Billy & Sarah.', de:'Kommt strahlend — das ist ein einmaliger Tag für Billy & Sarah.' } },
+            { icon:'👔', label:{ en:'Wedding Attire', de:'Hochzeitskleidung', sw:'Mavazi ya Harusi' }, body:{ en:'Vibrant colors, bold styles. This is a joyful celebration — dress bright!', de:'Lebendige Farben, kühne Stile. Das ist eine freudige Feier — bunt anziehen!', sw:'Rangi nzuri, mitindo ya kisasa. Hii ni sherehe ya furaha — vaa vizuri!' } },
+            { icon:'🌍', label:{ en:'Cultural Dress Welcome', de:'Trachten willkommen', sw:'Mavazi ya Kitamaduni Yanakaribishwa' }, body:{ en:'Kenyan or German traditional attire is warmly welcomed and celebrated.', de:'Kenianische oder deutsche Tracht ist herzlich willkommen und wird gefeiert.', sw:'Mavazi ya kitamaduni ya Kenya au Ujerumani yanakaribishwa na kusherehekewa.' } },
+            { icon:'📿', label:{ en:'Look Your Best', de:'Im besten Look', sw:'Vaa Vizuri Kabisa' }, body:{ en:'Come looking radiant — this is a once-in-a-lifetime day for Billy & Sarah.', de:'Kommt strahlend — das ist ein einmaliger Tag für Billy & Sarah.', sw:'Kuja ukiwa umevaa vizuri — hii ni siku ya kipekee kwa Billy na Sarah.' } },
           ].map((card, i) => (
             <div key={i} style={{ background:'#fff', padding:'1.8rem', textAlign:'center' }}>
               <div style={{ fontSize:'2rem', marginBottom:'0.6rem' }}>{card.icon}</div>
               <div style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.68rem', letterSpacing:'0.22em', textTransform:'uppercase', color:'#C9963A', marginBottom:'0.6rem' }}>
-                {lang==='en' ? card.label.en : card.label.de}
+                {lang==='sw' ? card.label.sw : lang==='de' ? card.label.de : card.label.en}
               </div>
               <p style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.8rem', color:'#7A5A40', lineHeight:1.8, margin:0 }}>
-                {lang==='en' ? card.body.en : card.body.de}
+                {lang==='sw' ? card.body.sw : lang==='de' ? card.body.de : card.body.en}
               </p>
             </div>
           ))}

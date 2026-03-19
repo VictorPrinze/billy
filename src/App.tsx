@@ -166,6 +166,33 @@ function LangSwitcher() {
           <span style={{ fontSize: '1rem', lineHeight: 1 }}>🇩🇪</span>
           <span>DE</span>
         </button>
+
+        {/* SW button */}
+        <button
+          onClick={() => setLang('sw')}
+          title="Badilisha kwa Kiswahili"
+          style={{
+            display: 'flex', alignItems: 'center', gap: '5px',
+            padding: '8px 14px',
+            borderRadius: '40px',
+            border: 'none',
+            background: lang === 'sw'
+              ? 'linear-gradient(135deg, #C9963A, #A07520)'
+              : 'transparent',
+            color: lang === 'sw' ? '#fff' : '#6B4A30',
+            fontFamily: "'Raleway', sans-serif",
+            fontSize: '0.7rem',
+            fontWeight: 600,
+            letterSpacing: '0.1em',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease',
+            whiteSpace: 'nowrap',
+            boxShadow: lang === 'sw' ? '0 2px 8px rgba(201,150,58,0.35)' : 'none',
+          }}
+        >
+          <span style={{ fontSize: '1rem', lineHeight: 1 }}>🇰🇪</span>
+          <span>SW</span>
+        </button>
       </div>
     </div>
   );

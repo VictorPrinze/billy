@@ -205,7 +205,7 @@ export default function Hero() {
 
         {/* Pre-title */}
         <p style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.65rem', letterSpacing:'0.5em', textTransform:'uppercase', color:'rgba(255,248,235,0.8)', marginBottom:'1.2rem', animation:'hFadeUp 0.8s ease 0.5s both' }}>
-          {t('You are cordially invited', 'Herzliche Einladung')}
+          {t('You are cordially invited', 'Herzliche Einladung', 'Mnakaribishwa kwa upole')}
         </p>
 
         {/* Names */}
@@ -219,8 +219,22 @@ export default function Hero() {
           </h1>
         </div>
 
+        {/* Siku Yetu Forever — right under names */}
+        <div style={{ animation:'hFadeUp 0.8s ease 0.85s both', marginTop:'1rem' }}>
+          <p style={{
+            fontFamily:"'Cormorant Garamond',serif",
+            fontStyle:'italic',
+            fontSize:'clamp(1rem,3vw,1.5rem)',
+            color:'rgba(212,160,67,0.9)',
+            letterSpacing:'0.15em',
+            margin:0,
+          }}>
+            Siku Yetu Forever
+          </p>
+        </div>
+
         {/* Divider */}
-        <div style={{ display:'flex', alignItems:'center', justifyContent:'center', gap:'0.8rem', margin:'1.8rem 0', animation:'hFadeUp 0.8s ease 0.9s both' }}>
+        <div style={{ display:'flex', alignItems:'center', justifyContent:'center', gap:'0.8rem', margin:'1.4rem 0', animation:'hFadeUp 0.8s ease 0.9s both' }}>
           <div style={{ width:'70px', height:'1px', background:'linear-gradient(90deg,transparent,rgba(212,160,67,0.6))' }}/>
           <span style={{ color:'rgba(212,160,67,0.85)', fontSize:'0.85rem' }}>✦</span>
           <div style={{ width:'70px', height:'1px', background:'linear-gradient(90deg,rgba(212,160,67,0.6),transparent)' }}/>
@@ -229,7 +243,7 @@ export default function Hero() {
         {/* Date & venue */}
         <div style={{ animation:'hFadeUp 0.8s ease 1s both' }}>
           <p style={{ fontFamily:"'Playfair Display',serif", fontSize:'clamp(1rem,3.5vw,1.6rem)', color:'#FDF8EB', marginBottom:'0.2rem', letterSpacing:'0.05em', textShadow:'0 2px 12px rgba(0,0,0,0.4)' }}>
-            {t('28th December 2026', '28. Dezember 2026')}
+            {t('28th December 2026', '28. Dezember 2026', '28 Desemba 2026')}
           </p>
           <p style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.7rem', letterSpacing:'0.3em', textTransform:'uppercase', color:'rgba(212,160,67,0.85)' }}>
             Eldoret, Kenya
@@ -239,9 +253,9 @@ export default function Hero() {
         {/* Verse */}
         <div style={{ margin:'1.6rem auto 0', maxWidth:'430px', padding:'1rem 1.5rem', border:'1px solid rgba(212,160,67,0.2)', background:'rgba(253,248,235,0.07)', backdropFilter:'blur(4px)', animation:'hFadeUp 0.8s ease 1.1s both' }}>
           <p style={{ fontFamily:"'Cormorant Garamond',serif", fontStyle:'italic', color:'rgba(253,248,235,0.8)', fontSize:'0.95rem', lineHeight:1.75, margin:0 }}>
-            {t('"Every good and perfect gift is from above."', '"Jede gute Gabe kommt von oben."' )}
+            {t('"Every good and perfect gift is from above."', '"Jede gute Gabe kommt von oben."', '"Kila kipawa chema na kamili kinatoka juu."')}
           </p>
-          <p style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.6rem', letterSpacing:'0.2em', color:'rgba(212,160,67,0.7)', margin:'0.4rem 0 0' }}>— {t('James 1:17','Jakobus 1,17')}</p>
+          <p style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.6rem', letterSpacing:'0.2em', color:'rgba(212,160,67,0.7)', margin:'0.4rem 0 0' }}>— {t('James 1:17','Jakobus 1,17','Yakobo 1:17')}</p>
         </div>
 
         {/* Countdown */}
@@ -270,7 +284,7 @@ export default function Hero() {
           }}
           onMouseEnter={e=>{e.currentTarget.style.transform='translateY(-2px)';e.currentTarget.style.boxShadow='0 8px 32px rgba(212,160,67,0.55)';}}
           onMouseLeave={e=>{e.currentTarget.style.transform='none';e.currentTarget.style.boxShadow='0 4px 24px rgba(212,160,67,0.4)';}}>
-            {t('RSVP Now','Jetzt zusagen')}
+            {t('RSVP Now','Jetzt zusagen','Jibu Sasa')}
           </a>
           <a href="#travel" style={{
             padding:'0.9rem 2.5rem',
@@ -283,14 +297,14 @@ export default function Hero() {
           }}
           onMouseEnter={e=>{e.currentTarget.style.background='rgba(212,160,67,0.18)';e.currentTarget.style.transform='translateY(-2px)';}}
           onMouseLeave={e=>{e.currentTarget.style.background='rgba(253,248,235,0.08)';e.currentTarget.style.transform='none';}}>
-            {t('Travel Guide','Anreise')}
+            {t('Travel Guide','Anreise','Mwongozo wa Safari')}
           </a>
         </div>
       </div>
 
       {/* Scroll indicator */}
       <div style={{ position:'absolute', bottom:'28px', left:'50%', transform:'translateX(-50%)', display:'flex', flexDirection:'column', alignItems:'center', gap:'6px', zIndex:4, animation:'hFadeIn 1s ease 2s both' }}>
-        <span style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.55rem', letterSpacing:'0.3em', textTransform:'uppercase', color:'rgba(212,160,67,0.55)' }}>{t('Scroll','Scrollen')}</span>
+        <span style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.55rem', letterSpacing:'0.3em', textTransform:'uppercase', color:'rgba(212,160,67,0.55)' }}>{t('Scroll','Scrollen','Sogeza')}</span>
         <div style={{ width:'1px', height:'44px', background:'linear-gradient(to bottom,rgba(212,160,67,0.5),transparent)', animation:'hFloat 2s ease infinite' }}/>
       </div>
 

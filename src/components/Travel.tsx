@@ -25,7 +25,7 @@ const TIPS = [
   { icon: '💱', title: { en: 'Currency', de: 'Währung' }, body: { en: 'Kenyan Shilling (KES). ATMs widely available. 1 EUR ≈ 140–150 KES. Credit cards accepted in most hotels.', de: 'Kenianischer Schilling (KES). Geldautomaten weit verbreitet. 1 EUR ≈ 140–150 KES.' } },
   { icon: '📱', title: { en: 'SIM & Data', de: 'SIM & Daten' }, body: { en: 'Buy a local Safaricom SIM at JKIA airport. 1GB data ≈ KES 100. Mpesa mobile payments are everywhere.', de: 'Lokale Safaricom-SIM am Flughafen kaufen. 1 GB Daten ≈ 100 KES. Mpesa-Mobilzahlungen sind überall.' } },
   { icon: '🌡️', title: { en: 'Weather in December', de: 'Wetter im Dezember' }, body: { en: 'Eldoret sits at 2,100m. Expect 15–25°C (60–77°F). Evenings cool. Pack a light jacket!', de: 'Eldoret liegt auf 2.100 m. Erwarte 15–25°C. Abends kühl. Leichte Jacke einpacken!' } },
-  { icon: '🚗', title: { en: 'Getting to Eldoret', de: 'Nach Eldoret kommen' }, body: { en: 'From Nairobi (JKIA): Fly to Eldoret Airport (EDL) — 1Hr. Or shuttle/matatu (~6h). The wedding team can help arrange group transport.', de: 'Von Nairobi: Flug nach Eldoret (EDL) — 45 Min. Oder Shuttle (~4h). Das Hochzeitsteam hilft bei der Gruppenreise.' } },
+  { icon: '🚗', title: { en: 'Getting to Eldoret', de: 'Nach Eldoret kommen', sw: 'Kufika Eldoret' }, body: { en: 'From Nairobi (JKIA): Fly to Eldoret Airport (EDL) — 45 min. Or shuttle/matatu (~4h). The wedding team can help arrange group transport.', de: 'Von Nairobi: Flug nach Eldoret (EDL) — 45 Min. Oder Shuttle (~4h). Das Hochzeitsteam hilft bei der Gruppenreise.', sw: 'Kutoka Nairobi (JKIA): Panda ndege hadi Eldoret (EDL) — dakika 45. Au shuttle/matatu (~masaa 4). Timu ya harusi itasaidia kupanga usafiri wa kikundi.' } },
   { icon: '📞', title: { en: 'Emergency Contacts', de: 'Notfallkontakte' }, body: { en: 'Kenya Police: 999 | Ambulance: 0700 395 395 | German Embassy Nairobi: +254 20 426 2100', de: 'Kenya Polizei: 999 | Krankenwagen: 0700 395 395 | Deutsche Botschaft Nairobi: +254 20 426 2100' } },
 ];
 
@@ -51,10 +51,10 @@ export default function Travel() {
         {/* Header */}
         <div className="reveal" style={{ textAlign:'center', marginBottom:'3rem' }}>
           <span style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.68rem', letterSpacing:'0.45em', textTransform:'uppercase', color:'#C9963A', display:'block', marginBottom:'0.6rem' }}>
-            {t('Getting Here', 'Anreise')}
+            {t('Getting Here', 'Anreise', 'Jinsi ya Kufika')}
           </span>
           <h2 style={{ fontFamily:"'Playfair Display',serif", fontSize:'clamp(2rem,5vw,3.5rem)', fontWeight:400, color:'#F5EFE6', margin:'0 0 0.8rem', lineHeight:1.1 }}>
-            {t('Travel Guide', 'Reiseführer')}
+            {t('Travel Guide', 'Reiseführer', 'Mwongozo wa Safari')}
           </h2>
           <p style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.88rem', color:'rgba(245,239,230,0.55)', maxWidth:'520px', margin:'0 auto', lineHeight:1.85 }}>
             {t(
@@ -107,13 +107,13 @@ export default function Travel() {
           {/* Leg 2 indicator */}
           <div style={{ marginTop:'1.5rem', padding:'0.8rem 1.2rem', background:'rgba(201,150,58,0.06)', border:'1px solid rgba(201,150,58,0.1)', display:'flex', alignItems:'center', gap:'1rem', flexWrap:'wrap' }}>
             <span style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.65rem', letterSpacing:'0.18em', textTransform:'uppercase', color:'rgba(201,150,58,0.75)', whiteSpace:'nowrap' }}>
-              {t('Then from Nairobi', 'Dann von Nairobi')}
+              {t('Then from Nairobi', 'Dann von Nairobi', 'Kisha kutoka Nairobi')}
             </span>
             <div style={{ flex:1, height:'1px', background:'rgba(201,150,58,0.2)', minWidth:'20px' }} />
             <span style={{ fontSize:'1rem' }}>✈️</span>
             <div style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.75rem', color:'#F5EFE6' }}>
-              Nairobi (JKIA) → Eldoret (EDL) — <span style={{ color:'#C9963A' }}>1h</span> &nbsp;|&nbsp;
-              {t('Or shuttle bus', 'Oder Shuttle-Bus')} — <span style={{ color:'#C9963A' }}>~6h</span>
+              Nairobi (JKIA) → Eldoret (EDL) — <span style={{ color:'#C9963A' }}>45 min</span> &nbsp;|&nbsp;
+              {t('Or shuttle bus', 'Oder Shuttle-Bus', 'Au basi la shuttle')} — <span style={{ color:'#C9963A' }}>~4h</span>
             </div>
           </div>
         </div>
@@ -171,7 +171,7 @@ export default function Travel() {
                   </div>
                   <div style={{ display:'flex', alignItems:'center', gap:'1.5rem' }}>
                     <div style={{ textAlign:'right' }}>
-                      <div style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.65rem', letterSpacing:'0.15em', textTransform:'uppercase', color:'rgba(201,150,58,0.65)' }}>{t('Flight time', 'Flugzeit')}</div>
+                      <div style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.65rem', letterSpacing:'0.15em', textTransform:'uppercase', color:'rgba(201,150,58,0.65)' }}>{t('Flight time', 'Flugzeit', 'Muda wa Ndege')}</div>
                       <div style={{ fontFamily:"'Playfair Display',serif", fontSize:'1.1rem', color:'#C9963A', fontWeight:500 }}>{apt.duration}</div>
                     </div>
                     <span style={{ color:'rgba(201,150,58,0.6)', fontSize:'0.9rem', transition:'transform 0.3s', transform: flightExpanded===apt.code ? 'rotate(180deg)':'none', display:'block' }}>▾</span>
@@ -197,12 +197,13 @@ export default function Travel() {
                 <span style={{ fontSize:'1.3rem', flexShrink:0 }}>🤝</span>
                 <div>
                   <div style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.72rem', fontWeight:600, letterSpacing:'0.15em', textTransform:'uppercase', color:'rgba(201,150,58,0.85)', marginBottom:'0.4rem' }}>
-                    {t('Group Travel Coordination', 'Gruppenreise-Koordination')}
+                    {t('Group Travel Coordination', 'Gruppenreise-Koordination', 'Uratibu wa Safari ya Kikundi')}
                   </div>
                   <p style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.8rem', color:'rgba(245,239,230,0.6)', lineHeight:1.8, margin:0 }}>
                     {t(
                       'If you\'re coming from Germany, reach out to Sarah directly. She\'ll create a WhatsApp group to coordinate flights, shared transfers, and accommodation for German guests.',
-                      'Wenn du aus Deutschland kommst, wende dich direkt an Sarah. Sie erstellt eine WhatsApp-Gruppe zur Koordination von Flügen, Transfers und Unterkunft für deutsche Gäste.'
+                      'Wenn du aus Deutschland kommst, wende dich direkt an Sarah. Sie erstellt eine WhatsApp-Gruppe zur Koordination von Flügen, Transfers und Unterkunft für deutsche Gäste.',
+                      'Ukija kutoka Ujerumani, wasiliana na Sarah moja kwa moja. Ataunda kikundi cha WhatsApp kuratibu ndege, usafiri wa pamoja, na malazi kwa wageni wa Ujerumani.'
                     )}
                   </p>
                 </div>
@@ -239,7 +240,7 @@ export default function Travel() {
               </div>
             ))}
             <div style={{ gridColumn:'1/-1', padding:'1.2rem 1.5rem', background:'rgba(201,150,58,0.06)', border:'1px solid rgba(201,150,58,0.15)', fontFamily:"'Raleway',sans-serif", fontSize:'0.78rem', color:'rgba(245,239,230,0.6)', lineHeight:1.8 }}>
-              📍 {t('All hotels are within 5–15 min drive of the venue. The wedding team will help guests book and arrange shared transport. Contact us early — December is busy!', 'Alle Hotels sind 5–15 Minuten vom Veranstaltungsort entfernt. Das Hochzeitsteam hilft bei Buchung und Transport. Frühzeitig melden — Dezember ist viel los!')}
+              📍 {t('All hotels are within 5–15 min drive of the venue. The wedding team will help guests book and arrange shared transport. Contact us early — December is busy!', 'Alle Hotels sind 5–15 Minuten vom Veranstaltungsort entfernt. Das Hochzeitsteam hilft bei Buchung und Transport. Frühzeitig melden — Dezember ist viel los!', 'Hoteli zote ziko ndani ya dakika 5–15 kutoka eneo la harusi. Timu ya harusi itasaidia wageni kuhifadhi na kupanga usafiri. Wasiliana nasi mapema — Desemba ni wakati mzito!')}
             </div>
           </div>
         )}
@@ -259,10 +260,10 @@ export default function Travel() {
                 <span style={{ fontSize:'1.6rem', flexShrink:0, lineHeight:1 }}>{tip.icon}</span>
                 <div>
                   <div style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.72rem', fontWeight:600, letterSpacing:'0.15em', textTransform:'uppercase', color:'rgba(201,150,58,0.85)', marginBottom:'0.4rem' }}>
-                    {lang === 'en' ? tip.title.en : tip.title.de}
+                    {lang === 'sw' ? (tip.title.sw || tip.title.en) : lang === 'de' ? tip.title.de : tip.title.en}
                   </div>
                   <p style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.78rem', color:'rgba(245,239,230,0.58)', lineHeight:1.8, margin:0 }}>
-                    {lang === 'en' ? tip.body.en : tip.body.de}
+                    {lang === 'sw' ? (tip.body.sw || tip.body.en) : lang === 'de' ? tip.body.de : tip.body.en}
                   </p>
                 </div>
               </div>

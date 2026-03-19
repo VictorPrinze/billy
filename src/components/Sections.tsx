@@ -14,7 +14,7 @@ const ALL_PHOTOS = [
   { file:'DSC05433.JPG',  label:'Our Engagement',   caption:{ en:'He asked, she said yes 😊',  de:'Er fragte, sie sagte Ja 😊' } },
   { file:'DSC05442.JPG',  label:'Our Journey',      caption:{ en:'Every step together',        de:'Jeden Schritt gemeinsam' } },
   { file:'DSC05443.JPG',  label:'Love Story',       caption:{ en:'Kenya meets Deutschland',    de:'Kenia trifft Deutschland' } },
-  { file:'DSC05449.JPG',  label:'Together',         caption:{ en:'Side by side forever',       de:'Seite an Seite für immer' } },
+  { file:'image8.JPG',    label:'Adventure',        caption:{ en:'Life is better together',    de:'Das Leben ist besser zusammen' } },
   { file:'DSC05466.JPG',  label:'Forever',          caption:{ en:'And so the adventure begins',de:'Das Abenteuer beginnt' } },
   { file:'image1.JPG',    label:'Sweet Moments',    caption:{ en:'Every moment with you',      de:'Jeder Moment mit dir' } },
   { file:'image2.JPG',    label:'Beautiful Day',    caption:{ en:'Days like these',            de:'Solche Tage' } },
@@ -37,7 +37,7 @@ const MASONRY = [
   { idx:7,  col:'3',        row:'span 1' },
   { idx:8,  col:'1',        row:'span 1' },
   { idx:9,  col:'2',        row:'span 2' }, // tall
-  { idx:10, col:'3',        row:'span 1' },
+  { idx:10, col:'1 / span 2', row:'span 1' },  // DSC05449 landscape — needs wide slot
   { idx:11, col:'1',        row:'span 1' },
   { idx:12, col:'3',        row:'span 1' },
   { idx:13, col:'1 / span 3', row:'span 1' }, // full width panoramic
@@ -71,13 +71,13 @@ export function Gallery() {
           {/* Header */}
           <div className="reveal" style={{ textAlign:'center', marginBottom:'clamp(2rem,5vw,3.5rem)' }}>
             <span style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.68rem', letterSpacing:'0.45em', textTransform:'uppercase', color:'#D4A043', display:'block', marginBottom:'0.6rem' }}>
-              {t('Our Memories','Unsere Erinnerungen')}
+              {t('Our Memories','Unsere Erinnerungen','Kumbukumbu Zetu')}
             </span>
             <h2 style={{ fontFamily:"'Playfair Display',serif", fontSize:'clamp(2rem,5vw,3.8rem)', fontWeight:400, color:'#5C3D22', margin:'0 0 0.5rem' }}>
-              {t('Photo Gallery','Fotogalerie')}
+              {t('Photo Gallery','Fotogalerie','Picha Zetu')}
             </h2>
             <p style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.82rem', color:'#9A7050', maxWidth:'440px', margin:'0.6rem auto 0', lineHeight:1.85 }}>
-              {t('Click any photo to view in full — swipe or use arrows to browse','Auf ein Foto klicken zum Vergrößern — Pfeiltasten zum Blättern')}
+              {t('Click any photo to view in full — swipe or use arrows to browse','Auf ein Foto klicken zum Vergrößern — Pfeiltasten zum Blättern','Bonyeza picha kuona kikamilifu — tumia mishale kuvinjari')}
             </p>
             <div style={{ display:'flex', alignItems:'center', justifyContent:'center', gap:'0.8rem', marginTop:'1rem' }}>
               <div style={{ width:'55px', height:'1px', background:'linear-gradient(90deg,transparent,#D4A043)' }}/>
@@ -176,7 +176,7 @@ export function Gallery() {
           {/* View all counter */}
           <div style={{ textAlign:'center', marginTop:'1.5rem' }}>
             <span style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.65rem', letterSpacing:'0.25em', textTransform:'uppercase', color:'rgba(155,115,75,0.6)' }}>
-              {t(`${ALL_PHOTOS.length} photographs`, `${ALL_PHOTOS.length} Fotografien`)} · {t('Click to open gallery','Zum Öffnen klicken')}
+              {t(`${ALL_PHOTOS.length} photographs`, `${ALL_PHOTOS.length} Fotografien`, `Picha ${ALL_PHOTOS.length}`)} · {t('Click to open gallery','Zum Öffnen klicken','Bonyeza kufungua')}
             </span>
           </div>
         </div>
@@ -343,7 +343,7 @@ export function RSVP() {
       setSubmitted(true);
     } catch (err) {
       console.error('RSVP submission failed:', err);
-      alert(t('Something went wrong. Please try again.', 'Etwas ist schiefgelaufen. Bitte versuche es erneut.'));
+      alert(t('Something went wrong. Please try again.', 'Etwas ist schiefgelaufen. Bitte versuche es erneut.', 'Hitilafu imetokea. Tafadhali jaribu tena.'));
     }
   };
 
@@ -354,7 +354,7 @@ export function RSVP() {
       <div style={{ maxWidth:'600px', margin:'0 auto', padding:'clamp(4rem,10vw,8rem) 24px', textAlign:'center', boxSizing:'border-box', position:'relative', zIndex:1 }}>
         <div style={{ fontSize:'3.5rem', marginBottom:'1rem', animation:'scaleIn 0.6s ease' }}>✦</div>
         <h2 style={{ fontFamily:"'Playfair Display',serif", fontSize:'clamp(2rem,6vw,3.5rem)', fontWeight:400, color:'#FDF8EB', marginBottom:'1rem' }}>
-          {t(`Thank you, ${form.name}!`,`Danke, ${form.name}!`)}
+          {t(`Thank you, ${form.name}!`,`Danke, ${form.name}!`,`Asante, ${form.name}!`)}
         </h2>
         <p style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.88rem', color:'rgba(253,248,235,0.65)', lineHeight:1.9, margin:'0 auto 1.5rem', maxWidth:'380px' }}>
           {t("We've received your RSVP and can't wait to celebrate with you on 28 December 2026.","Wir haben deine Antwort erhalten und freuen uns auf die Feier am 28. Dezember 2026.")}
@@ -367,7 +367,7 @@ export function RSVP() {
           <div style={{ width:'40px', height:'1px', background:'rgba(212,160,67,0.4)' }}/>
         </div>
         <p style={{ fontFamily:"'Cormorant Garamond',serif", fontStyle:'italic', color:'rgba(212,160,67,0.75)', fontSize:'1.1rem', lineHeight:1.7 }}>
-          {t('"I have found the one whom my soul loves."','"Ich habe gefunden, den meine Seele liebt."')}
+          {t('"I have found the one whom my soul loves."','"Ich habe gefunden, den meine Seele liebt."','"Nimempata anayependwa na nafsi yangu."')}
         </p>
       </div>
     </section>
@@ -385,10 +385,10 @@ export function RSVP() {
           {/* Left — text on photo */}
           <div className="rsvp-left">
             <span style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.68rem', letterSpacing:'0.45em', textTransform:'uppercase', color:'#D4A043', display:'block', marginBottom:'0.7rem' }}>
-              {t('Join the Celebration','Dabei sein')}
+              {t('Join the Celebration','Dabei sein','Jiunge na Sherehe')}
             </span>
             <h2 style={{ fontFamily:"'Playfair Display',serif", fontSize:'clamp(2rem,5vw,3.6rem)', fontWeight:400, color:'#FDF8EB', margin:'0 0 1rem', lineHeight:1.08 }}>
-              {t('Celebrate Our Love With Us','Feiert unsere Liebe mit uns')}
+              {t('Celebrate Our Love With Us','Feiert unsere Liebe mit uns','Sherehekea Upendo Wetu Nasi')}
             </h2>
             <div style={{ width:'44px', height:'2px', background:'#D4A043', marginBottom:'1.5rem' }}/>
             <p style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.88rem', color:'rgba(253,248,235,0.65)', lineHeight:1.9, marginBottom:'2rem' }}>
@@ -399,10 +399,10 @@ export function RSVP() {
             </p>
             <blockquote style={{ borderLeft:'2px solid rgba(212,160,67,0.4)', paddingLeft:'1.3rem', margin:'0 0 2rem' }}>
               <p style={{ fontFamily:"'Cormorant Garamond',serif", fontStyle:'italic', color:'rgba(253,248,235,0.72)', fontSize:'1.08rem', lineHeight:1.75, margin:0 }}>
-                {t('"He who finds a wife finds what is good and receives favor from the Lord."','"Wer eine Frau gefunden hat, hat etwas Gutes gefunden."')}
+                {t('"He who finds a wife finds what is good and receives favor from the Lord."','"Wer eine Frau gefunden hat, hat etwas Gutes gefunden."','"Mtu apatapo mke, anapata kitu kizuri na kupata kibali kwa Bwana."')}
               </p>
               <cite style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.65rem', letterSpacing:'0.15em', color:'rgba(212,160,67,0.65)', marginTop:'0.5rem', display:'block', fontStyle:'normal' }}>
-                — {t('Proverbs 18:22','Sprüche 18,22')}
+                — {t('Proverbs 18:22','Sprüche 18,22','Mithali 18:22')}
               </cite>
             </blockquote>
 
@@ -435,23 +435,23 @@ export function RSVP() {
               {/* Form header */}
               <div style={{ marginBottom:'1.5rem', paddingBottom:'1rem', borderBottom:'1px solid rgba(92,61,34,0.1)' }}>
                 <div style={{ fontFamily:"'Playfair Display',serif", fontSize:'1.3rem', color:'#5C3D22', marginBottom:'0.2rem' }}>
-                  {t('Your RSVP','Ihre Antwort')}
+                  {t('Your RSVP','Ihre Antwort','Jibu Lako')}
                 </div>
                 <p style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.72rem', color:'#9A7050', margin:0, letterSpacing:'0.05em' }}>
-                  {t('Deadline: 28 November 2026','Frist: 28. November 2026')}
+                  {t('Deadline: 28 November 2026','Frist: 28. November 2026','Mwisho: 28 Novemba 2026')}
                 </p>
               </div>
 
               <div style={{ display:'flex', flexDirection:'column', gap:'1rem' }}>
                 {[
-                  { name:'name',  label:{en:'Full Name *',de:'Vollständiger Name *'}, type:'text', ph:{en:'Your full name',de:'Dein vollständiger Name'} },
-                  { name:'email', label:{en:'Email *',de:'E-Mail *'},                 type:'email',ph:{en:'your@email.com',de:'deine@email.de'} },
-                  { name:'phone', label:{en:'WhatsApp / Phone',de:'WhatsApp / Telefon'},type:'tel',ph:{en:'+49 or +254…',de:'+49 oder +254…'} },
+                  { name:'name',  label:{en:'Full Name *',de:'Vollständiger Name *',sw:'Jina Kamili *'}, type:'text', ph:{en:'Your full name',de:'Dein vollständiger Name',sw:'Jina lako kamili'} },
+                  { name:'email', label:{en:'Email *',de:'E-Mail *',sw:'Barua Pepe *'},                  type:'email',ph:{en:'your@email.com',de:'deine@email.de',sw:'barua@pepe.yako'} },
+                  { name:'phone', label:{en:'WhatsApp / Phone',de:'WhatsApp / Telefon',sw:'WhatsApp / Simu'},type:'tel',ph:{en:'+49 or +254…',de:'+49 oder +254…',sw:'+254 au +49…'} },
                 ].map(f => (
                   <div key={f.name}>
-                    <label style={lStyle}>{lang==='en'?f.label.en:f.label.de}</label>
+                    <label style={lStyle}>{lang==='sw'?f.label.sw:lang==='de'?f.label.de:f.label.en}</label>
                     <input name={f.name} type={f.type} value={(form as any)[f.name]} onChange={change}
-                      placeholder={lang==='en'?f.ph.en:f.ph.de}
+                      placeholder={lang==='sw'?f.ph.sw:lang==='de'?f.ph.de:f.ph.en}
                       style={{...iStyle, borderColor:errors[f.name]?'#BB0000':'rgba(92,61,34,0.18)'}}
                     />
                     {errors[f.name] && <p style={{color:'#BB0000',fontSize:'0.68rem',margin:'0.2rem 0 0',fontFamily:"'Raleway',sans-serif"}}>{errors[f.name]}</p>}
@@ -460,19 +460,19 @@ export function RSVP() {
 
                 <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'1rem' }}>
                   <div>
-                    <label style={lStyle}>{t('Guests','Gäste')}</label>
+                    <label style={lStyle}>{t('Guests','Gäste','Wageni')}</label>
                     <select name="guests" value={form.guests} onChange={change} style={iStyle}>
                       {['1','2','3','4','5+'].map(n=><option key={n} value={n}>{n}</option>)}
                     </select>
                   </div>
                   <div>
-                    <label style={lStyle}>{t('Attending? *','Dabei? *')}</label>
+                    <label style={lStyle}>{t('Attending? *','Dabei? *','Utakuwepo? *')}</label>
                     <select name="attendance" value={form.attendance} onChange={change}
                       style={{...iStyle,borderColor:errors.attendance?'#BB0000':'rgba(92,61,34,0.18)'}}>
-                      <option value="">{t('Select…','Auswählen…')}</option>
-                      <option value="yes">{t('Joyfully yes 🎉','Ja, gerne 🎉')}</option>
-                      <option value="no">{t('Regretfully no','Leider nein')}</option>
-                      <option value="maybe">{t('Will confirm soon','Bestätige noch')}</option>
+                      <option value="">{t('Select…','Auswählen…','Chagua…')}</option>
+                      <option value="yes">{t('Joyfully yes 🎉','Ja, gerne 🎉','Ndiyo kwa furaha 🎉')}</option>
+                      <option value="no">{t('Regretfully no','Leider nein','Samahani, hapana')}</option>
+                      <option value="maybe">{t('Will confirm soon','Bestätige noch','Nitathibitisha hivi karibuni')}</option>
                     </select>
                     {errors.attendance && <p style={{color:'#BB0000',fontSize:'0.68rem',margin:'0.2rem 0 0',fontFamily:"'Raleway',sans-serif"}}>{errors.attendance}</p>}
                   </div>
@@ -480,19 +480,19 @@ export function RSVP() {
 
                 <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'1rem' }}>
                   <div>
-                    <label style={lStyle}>{t('Meal','Mahlzeit')}</label>
+                    <label style={lStyle}>{t('Meal','Mahlzeit','Chakula')}</label>
                     <select name="meal" value={form.meal} onChange={change} style={iStyle}>
-                      <option value="">{t('Select…','Auswählen…')}</option>
+                      <option value="">{t('Select…','Auswählen…','Chagua…')}</option>
                       <option value="standard">Standard</option>
-                      <option value="vegetarian">{t('Vegetarian','Vegetarisch')}</option>
+                      <option value="vegetarian">{t('Vegetarian','Vegetarisch','Mboga tu')}</option>
                       <option value="vegan">Vegan</option>
                       <option value="halal">Halal</option>
                     </select>
                   </div>
                   <div>
-                    <label style={lStyle}>{t('Language','Sprache')}</label>
+                    <label style={lStyle}>{t('Language','Sprache','Lugha')}</label>
                     <select name="language" value={form.language} onChange={change} style={iStyle}>
-                      <option value="">{t('Select…','Auswählen…')}</option>
+                      <option value="">{t('Select…','Auswählen…','Chagua…')}</option>
                       <option value="en">English</option>
                       <option value="de">Deutsch</option>
                       <option value="sw">Kiswahili</option>
@@ -501,9 +501,9 @@ export function RSVP() {
                 </div>
 
                 <div>
-                  <label style={lStyle}>{t('Message for Billy & Sarah','Nachricht ans Brautpaar')}</label>
+                  <label style={lStyle}>{t('Message for Billy & Sarah','Nachricht ans Brautpaar','Ujumbe kwa Billy na Sarah')}</label>
                   <textarea name="message" value={form.message} onChange={change} rows={3}
-                    placeholder={t('A blessing, wish, or special message…','Ein Segen oder eine besondere Nachricht…')}
+                    placeholder={t('A blessing, wish, or special message…','Ein Segen oder eine besondere Nachricht…','Baraka, dua, au ujumbe maalum…')}
                     style={{...iStyle, resize:'vertical'}}
                   />
                 </div>
@@ -519,7 +519,7 @@ export function RSVP() {
                 }}
                 onMouseEnter={e=>{e.currentTarget.style.transform='translateY(-2px)';e.currentTarget.style.boxShadow='0 8px 32px rgba(212,160,67,0.5)';}}
                 onMouseLeave={e=>{e.currentTarget.style.transform='none';e.currentTarget.style.boxShadow='0 4px 20px rgba(212,160,67,0.35)';}}
-                >{t('Send RSVP  ✦','RSVP senden  ✦')}</button>
+                >{t('Send RSVP  ✦','RSVP senden  ✦','Tuma Jibu  ✦')}</button>
               </div>
             </div>
           </div>
@@ -591,11 +591,37 @@ export function Footer() {
         </nav>
 
         <p style={{ fontFamily:"'Cormorant Garamond',serif", fontStyle:'italic', fontSize:'1rem', color:'rgba(253,248,235,0.3)', maxWidth:'460px', margin:'0 auto 2rem', lineHeight:1.8 }}>
-          {t('"Many waters cannot quench love; rivers cannot sweep it away."','"Viele Wasser können die Liebe nicht auslöschen."')}
+          {t('"Many waters cannot quench love; rivers cannot sweep it away."','"Viele Wasser können die Liebe nicht auslöschen."','"Maji mengi hayawezi kuzima upendo; mito haiwezi kuufunika."')}
           <span style={{ display:'block', fontFamily:"'Raleway',sans-serif", fontSize:'0.6rem', fontStyle:'normal', letterSpacing:'0.18em', color:'rgba(212,160,67,0.4)', marginTop:'0.4rem' }}>
-            — {t('Song of Solomon 8:7','Hoheslied 8,7')}
+            — {t('Song of Solomon 8:7','Hoheslied 8,7','Wimbo wa Sulemani 8:7')}
           </span>
         </p>
+
+        <div style={{ height:'1px', background:'rgba(212,160,67,0.08)', marginBottom:'2rem' }}/>
+
+        {/* Mungu Ni Mwema — closing blessing */}
+        <div style={{ marginBottom:'1.8rem' }}>
+          <p style={{
+            fontFamily:"'Playfair Display',serif",
+            fontSize:'clamp(1.2rem,3vw,1.8rem)',
+            fontWeight:400,
+            color:'rgba(212,160,67,0.8)',
+            margin:'0 0 0.3rem',
+            letterSpacing:'0.05em',
+          }}>
+            Mungu Ni Mwema
+          </p>
+          <p style={{
+            fontFamily:"'Raleway',sans-serif",
+            fontSize:'0.62rem',
+            letterSpacing:'0.3em',
+            textTransform:'uppercase',
+            color:'rgba(253,248,235,0.25)',
+            margin:0,
+          }}>
+            God Is Good · Gott Ist Gut
+          </p>
+        </div>
 
         <div style={{ height:'1px', background:'rgba(212,160,67,0.08)', marginBottom:'1.5rem' }}/>
 

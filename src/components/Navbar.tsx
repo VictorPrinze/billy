@@ -29,12 +29,12 @@ export default function Navbar() {
   }, [menuOpen]);
 
   const links = [
-    { en: 'Home',      de: 'Start',    href: '#home' },
-    { en: 'Our Story', de: 'Unsere Geschichte', href: '#story' },
-    { en: 'Events',    de: 'Ablauf',   href: '#events' },
-    { en: 'Travel',    de: 'Anreise',  href: '#travel' },
-    { en: 'Gallery',   de: 'Galerie',  href: '#gallery' },
-    { en: 'RSVP',      de: 'RSVP',    href: '#rsvp' },
+    { en: 'Home',      de: 'Start',              sw: 'Nyumbani',     href: '#home' },
+    { en: 'Our Story', de: 'Unsere Geschichte',  sw: 'Hadithi Yetu', href: '#story' },
+    { en: 'Events',    de: 'Ablauf',             sw: 'Matukio',      href: '#events' },
+    { en: 'Travel',    de: 'Anreise',            sw: 'Safari',       href: '#travel' },
+    { en: 'Gallery',   de: 'Galerie',            sw: 'Picha',        href: '#gallery' },
+    { en: 'RSVP',      de: 'RSVP',              sw: 'Jibu',         href: '#rsvp' },
   ];
 
   const solidBg   = scrolled || menuOpen;
@@ -81,7 +81,7 @@ export default function Navbar() {
                 }}
                 onMouseEnter={e => e.currentTarget.style.color = '#C9963A'}
                 onMouseLeave={e => e.currentTarget.style.color = linkClr}
-                >{t(link.en, link.de)}</a>
+                >{t(link.en, link.de, link.sw)}</a>
               </li>
             ))}
           </ul>
@@ -144,7 +144,7 @@ export default function Navbar() {
                 letterSpacing: '0.22em', textTransform: 'uppercase',
                 color: '#3D2B1F', fontWeight: 500,
                 borderBottom: '1px solid rgba(201,150,58,0.07)',
-              }}>{t(link.en, link.de)}</a>
+              }}>{t(link.en, link.de, link.sw)}</a>
             ))}
             {/* Mobile lang toggle */}
             <div style={{ display: 'flex', gap: '0.8rem', padding: '1rem 1.5rem 0' }}>

@@ -112,8 +112,8 @@ export default function Travel() {
             <div style={{ flex:1, height:'1px', background:'rgba(201,150,58,0.2)', minWidth:'20px' }} />
             <span style={{ fontSize:'1rem' }}>✈️</span>
             <div style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.75rem', color:'#F5EFE6' }}>
-              Nairobi (JKIA) → Eldoret (EDL) — <span style={{ color:'#C9963A' }}>45 min</span> &nbsp;|&nbsp;
-              {t('Or shuttle bus', 'Oder Shuttle-Bus', 'Au basi la shuttle')} — <span style={{ color:'#C9963A' }}>~4h</span>
+              Nairobi (JKIA) → Eldoret (EDL) — <span style={{ color:'#C9963A' }}>1h</span> &nbsp;|&nbsp;
+              {t('Or shuttle bus', 'Oder Shuttle-Bus', 'Au basi la shuttle')} — <span style={{ color:'#C9963A' }}>~6h</span>
             </div>
           </div>
         </div>

@@ -82,28 +82,24 @@ export default function ProgressiveImage({ src, thumb, alt, style, className, po
 // 'center' = default, good for landscapes and wide shots
 // '50% 20%' = custom fine-tuning
 export const PHOTO_POSITIONS: Record<string, string> = {
-  // ── DSC series ──
-  'DSC05281.JPG': '50% 30%',   // couple portrait — keep faces
-  'DSC05285.JPG': '50% 80%',   // looking up through flowers — faces at bottom
-  'DSC05402.JPG': 'center',    // landscape/mountain — center fine
-  'DSC05406.JPG': '50% 25%',   // portrait — keep faces high
-  'DSC05411.JPG': '50% 25%',   // portrait — keep faces high
-  'DSC05415.JPG': '50% 20%',   // portrait — keep faces high
-  'DSC05417.JPG': '50% 25%',   // portrait — keep faces high
-  'DSC05433.JPG': '50% 20%',   // portrait — keep faces high
-  'DSC05442.JPG': 'center',    // landscape/wide shot
-  'DSC05443.JPG': '50% 25%',   // portrait — keep faces high
-  'DSC05449.JPG': '50% 25%',   // portrait — keep faces high
+  'DSC05281.JPG': '50% 30%',   // couple portrait
+  'DSC05285.JPG': '50% 30%',   // looking up — faces at very bottom
+  'DSC05402.JPG': '50% 35%',    // mountains landscape
+  'DSC05406.JPG': '50% 45%',   // portrait — faces high
+  'DSC05411.JPG': '50% 20%',   // portrait — faces high
+  'DSC05415.JPG': '50% 20%',   // portrait — faces high
+  'DSC05417.JPG': '50% 20%',   // portrait — faces high
+  'DSC05433.JPG': '50% 20%',   // engagement portrait
+  'DSC05442.JPG': '50% 35%',   // couple from behind, landscape
+  'DSC05443.JPG': '50% 25%',   // portrait
+  'DSC05449.JPG': '50% 40%',   // landscape with mountains
   'DSC05466.JPG': 'center',    // landscape wide shot
-
-  // ── image series ──
-  'image1.JPG':   '50% 25%',   // portrait couple
+  'image1.JPG':   '50% 20%',   // portrait couple
   'image2.JPG':   '50% 20%',   // portrait couple
-  'image3.JPG':   '50% 15%',   // bench photo — faces at top, torso was showing
+  'image3.JPG':   '50% 25%',   // bench photo — both people visible
   'image4.JPG':   '50% 20%',   // portrait
-  'image5.JPG':   '50% 15%',   // suit/dress — heads at top, was cropped at chest
-  'image7.JPG':   '50% 20%',   // portrait couple
-  'image8.JPG':   '50% 20%',   // portrait couple
+  'image5.JPG':   '50% 15%',   // suit/dress — heads at top
+  'image7.JPG':   '50% 20%',   // selfie — faces at very top
 };
 
 export function getWebPPaths(filename: string) {

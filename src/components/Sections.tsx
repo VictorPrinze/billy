@@ -4,48 +4,44 @@ import { useLang } from './Langcontext';
 import ProgressiveImage, { getWebPPaths, PHOTO_POSITIONS } from './Progressiveimage';
 
 const ALL_PHOTOS = [
-  { file:'DSC05281.JPG',  label:'Billy & Sarah',   caption:{ en:'Together always',           de:'Immer zusammen' } },
-  { file:'DSC05285.JPG',  label:'Our Story',        caption:{ en:'Where it all began',         de:'Wo alles begann' } },
-  { file:'DSC05402.JPG',  label:'In Love',          caption:{ en:'Two hearts, one soul',       de:'Zwei Herzen, eine Seele' } },
-  { file:'DSC05406.JPG',  label:'Pure Joy',         caption:{ en:'Happiness looks like this',  de:'So sieht Glück aus' } },
-  { file:'DSC05411.JPG',  label:'Special Moment',   caption:{ en:'A moment frozen in time',    de:'Ein unvergesslicher Moment' } },
-  { file:'DSC05415.JPG',  label:'The Proposal',     caption:{ en:'The beginning of forever',   de:'Der Beginn der Ewigkeit' } },
-  { file:'DSC05417.JPG',  label:'Just Us',          caption:{ en:'You and me, always',         de:'Du und ich, immer' } },
-  { file:'DSC05433.JPG',  label:'Our Engagement',   caption:{ en:'He asked, she said yes 😊',  de:'Er fragte, sie sagte Ja 😊' } },
-  { file:'DSC05442.JPG',  label:'Our Journey',      caption:{ en:'Every step together',        de:'Jeden Schritt gemeinsam' } },
-  { file:'DSC05443.JPG',  label:'Love Story',       caption:{ en:'Kenya meets Deutschland',    de:'Kenia trifft Deutschland' } },
-  { file:'image8.JPG',    label:'Adventure',        caption:{ en:'Life is better together',    de:'Das Leben ist besser zusammen' } },
-  { file:'DSC05466.JPG',  label:'Forever',          caption:{ en:'And so the adventure begins',de:'Das Abenteuer beginnt' } },
-  { file:'image1.JPG',    label:'Sweet Moments',    caption:{ en:'Every moment with you',      de:'Jeder Moment mit dir' } },
-  { file:'image2.JPG',    label:'Beautiful Day',    caption:{ en:'Days like these',            de:'Solche Tage' } },
-  { file:'image3.JPG',    label:'Our Light',        caption:{ en:'You are my sunshine',        de:'Du bist mein Sonnenschein' } },
-  { file:'image4.JPG',    label:'Bliss',            caption:{ en:'Pure happiness',             de:'Reines Glück' } },
-  { file:'image5.JPG',    label:'My Person',        caption:{ en:'Found my person',            de:'Mein Mensch gefunden' } },
-  { file:'image7.JPG',    label:'Close to You',     caption:{ en:'Home is wherever you are',   de:'Zuhause ist, wo du bist' } },
-  { file:'image8.JPG',    label:'Love',             caption:{ en:'This is love',               de:'Das ist Liebe' } },
+  { file:'DSC05281.JPG', label:'Billy & Sarah',  caption:{ en:'Together always',          de:'Immer zusammen',              sw:'Pamoja daima' } },
+  { file:'DSC05285.JPG', label:'Our Story',       caption:{ en:'Where it all began',        de:'Wo alles begann',             sw:'Mahali palipoanza' } },
+  { file:'DSC05402.JPG', label:'In Love',         caption:{ en:'Two hearts, one soul',      de:'Zwei Herzen, eine Seele',     sw:'Mioyo miwili, roho moja' } },
+  { file:'DSC05406.JPG', label:'Pure Joy',        caption:{ en:'Happiness looks like this', de:'So sieht Glück aus',          sw:'Furaha inaonekana hivi' } },
+  { file:'DSC05411.JPG', label:'Special Moment',  caption:{ en:'A moment frozen in time',   de:'Ein unvergesslicher Moment',  sw:'Wakati usiosahaulika' } },
+  { file:'DSC05415.JPG', label:'The Proposal',    caption:{ en:'The beginning of forever',  de:'Der Beginn der Ewigkeit',     sw:'Mwanzo wa milele' } },
+  { file:'DSC05417.JPG', label:'Just Us',         caption:{ en:'You and me, always',        de:'Du und ich, immer',           sw:'Wewe na mimi, daima' } },
+  { file:'DSC05433.JPG', label:'Our Engagement',  caption:{ en:'He asked, she said yes 😊', de:'Er fragte, sie sagte Ja 😊',  sw:'Aliomba, alisema ndiyo 😊' } },
+  { file:'DSC05442.JPG', label:'Our Journey',     caption:{ en:'Every step together',       de:'Jeden Schritt gemeinsam',     sw:'Kila hatua pamoja' } },
+  { file:'DSC05443.JPG', label:'Love Story',      caption:{ en:'Kenya meets Deutschland',   de:'Kenia trifft Deutschland',    sw:'Kenya nakutana na Ujerumani' } },
+  { file:'DSC05466.JPG', label:'Forever',         caption:{ en:'And so the adventure begins',de:'Das Abenteuer beginnt',     sw:'Tukio linanza' } },
+  { file:'image1.JPG',   label:'Sweet Moments',   caption:{ en:'Every moment with you',     de:'Jeder Moment mit dir',        sw:'Kila wakati nawe' } },
+  { file:'image2.JPG',   label:'Beautiful Day',   caption:{ en:'Days like these',           de:'Solche Tage',                 sw:'Siku kama hizi' } },
+  { file:'image3.JPG',   label:'Our Light',       caption:{ en:'You are my sunshine',       de:'Du bist mein Sonnenschein',   sw:'Wewe ni jua langu' } },
+  { file:'image4.JPG',   label:'Bliss',           caption:{ en:'Pure happiness',            de:'Reines Glück',                sw:'Furaha kamili' } },
+  { file:'image5.JPG',   label:'My Person',       caption:{ en:'Found my person',           de:'Mein Mensch gefunden',        sw:'Nimempata wangu' } },
+  { file:'image7.JPG',   label:'Close to You',    caption:{ en:'Home is wherever you are',  de:'Zuhause ist, wo du bist',     sw:'Nyumbani ni popote ulipo' } },
 ];
 
-// Desktop masonry layout — 19 photos, 3 cols, varied heights
+// Desktop masonry layout — 17 photos, 3 cols, no gaps
 const MASONRY = [
-  { idx:0,  col:'1',        row:'span 2' }, // tall
-  { idx:1,  col:'2',        row:'span 1' },
-  { idx:2,  col:'3',        row:'span 2' }, // tall
-  { idx:3,  col:'2',        row:'span 1' },
-  { idx:4,  col:'1',        row:'span 1' },
-  { idx:5,  col:'3',        row:'span 1' },
-  { idx:6,  col:'1 / span 2', row:'span 1' }, // wide
-  { idx:7,  col:'3',        row:'span 1' },
-  { idx:8,  col:'1',        row:'span 1' },
-  { idx:9,  col:'2',        row:'span 2' }, // tall
-  { idx:10, col:'1 / span 2', row:'span 1' },  // DSC05449 landscape — needs wide slot
-  { idx:11, col:'1',        row:'span 1' },
-  { idx:12, col:'3',        row:'span 1' },
-  { idx:13, col:'1 / span 3', row:'span 1' }, // full width panoramic
-  { idx:14, col:'1',        row:'span 2' }, // tall
-  { idx:15, col:'2',        row:'span 1' },
-  { idx:16, col:'3',        row:'span 2' }, // tall
-  { idx:17, col:'2',        row:'span 1' },
-  { idx:18, col:'1 / span 1', row:'span 1' },
+  { idx:0,  col:'1',          row:'span 2' }, // DSC05281 — tall portrait
+  { idx:1,  col:'2',          row:'span 2' }, // DSC05285 — tall portrait
+  { idx:2,  col:'3',          row:'span 1' }, // DSC05402 — mountains
+  { idx:3,  col:'3',          row:'span 1' }, // DSC05406 — portrait
+  { idx:4,  col:'1',          row:'span 1' }, // DSC05411 — portrait
+  { idx:5,  col:'2',          row:'span 1' }, // DSC05415 — portrait
+  { idx:6,  col:'3',          row:'span 2' }, // DSC05417 — tall portrait
+  { idx:7,  col:'1',          row:'span 1' }, // DSC05433 — engagement
+  { idx:8,  col:'2',          row:'span 1' }, // DSC05442 — journey
+  { idx:9,  col:'1',          row:'span 1' }, // DSC05443 — love story
+  { idx:10, col:'2',          row:'span 1' }, // DSC05466 — forever
+  { idx:11, col:'3',          row:'span 1' }, // image1 — sweet moments
+  { idx:12, col:'1',          row:'span 1' }, // image2 — beautiful day
+  { idx:13, col:'2',          row:'span 2' }, // image3 — tall heart hands
+  { idx:14, col:'3',          row:'span 2' }, // image4 — tall bliss
+  { idx:15, col:'1',          row:'span 2' }, // image5 — tall suit
+  { idx:16, col:'2',          row:'span 2' }, // image7 — tall selfie (was working before)
 ];
 
 export function Gallery() {
@@ -133,7 +129,7 @@ export function Gallery() {
                   }}>
                     <div style={{ fontFamily:"'Playfair Display',serif", fontSize:'0.95rem', color:'#FDF8EB', fontWeight:500 }}>{p.label}</div>
                     <div style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.65rem', color:'rgba(212,160,67,0.85)', marginTop:'0.25rem', letterSpacing:'0.08em' }}>
-                      {lang==='en' ? p.caption.en : p.caption.de}
+                      {lang==='sw' ? p.caption.sw : lang==='de' ? p.caption.de : p.caption.en}
                     </div>
                     <div style={{ display:'flex', alignItems:'center', gap:'6px', marginTop:'0.5rem' }}>
                       <div style={{ width:'16px', height:'1px', background:'rgba(212,160,67,0.6)' }}/>
@@ -241,7 +237,7 @@ export function Gallery() {
                 {ALL_PHOTOS[lightbox].label}
               </div>
               <div style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.68rem', color:'rgba(212,160,67,0.65)', marginTop:'0.3rem', letterSpacing:'0.15em' }}>
-                {lang==='en' ? ALL_PHOTOS[lightbox].caption.en : ALL_PHOTOS[lightbox].caption.de}
+                {lang==='sw' ? ALL_PHOTOS[lightbox].caption.sw : lang==='de' ? ALL_PHOTOS[lightbox].caption.de : ALL_PHOTOS[lightbox].caption.en}
               </div>
             </div>
           </div>
@@ -409,14 +405,14 @@ export function RSVP() {
             {/* Stats row */}
             <div style={{ display:'flex', gap:'2rem', flexWrap:'wrap' }}>
               {[
-                { n:'28', label:{ en:'Dec 2026', de:'Dez 2026' } },
-                { n:'3',  label:{ en:'Events',   de:'Feiern' } },
-                { n:'2',  label:{ en:'Nations',  de:'Nationen' } },
+                { n:'28', label:{ en:'Dec 2026', de:'Dez 2026', sw:'Des 2026' } },
+                { n:'3',  label:{ en:'Events',   de:'Feiern',  sw:'Matukio' } },
+                { n:'2',  label:{ en:'Nations',  de:'Nationen',sw:'Mataifa' } },
               ].map(s => (
                 <div key={s.n}>
                   <div style={{ fontFamily:"'Playfair Display',serif", fontSize:'2.2rem', color:'#D4A043', fontWeight:400, lineHeight:1 }}>{s.n}</div>
                   <div style={{ fontFamily:"'Raleway',sans-serif", fontSize:'0.62rem', letterSpacing:'0.22em', textTransform:'uppercase', color:'rgba(253,248,235,0.45)', marginTop:'0.2rem' }}>
-                    {lang==='en' ? s.label.en : s.label.de}
+                    {lang==='sw' ? (s.label.sw || s.label.en) : lang==='de' ? s.label.de : s.label.en}
                   </div>
                 </div>
               ))}
@@ -543,12 +539,12 @@ export function Footer() {
   const { t } = useLang();
 
   const links = [
-    {en:'Home',de:'Start',href:'#home'},
-    {en:'Our Story',de:'Geschichte',href:'#story'},
-    {en:'Events',de:'Ablauf',href:'#events'},
-    {en:'Travel',de:'Anreise',href:'#travel'},
-    {en:'Gallery',de:'Galerie',href:'#gallery'},
-    {en:'RSVP',de:'RSVP',href:'#rsvp'},
+    {en:'Home',de:'Start',sw:'Nyumbani',href:'#home'},
+    {en:'Our Story',de:'Geschichte',sw:'Hadithi Yetu',href:'#story'},
+    {en:'Events',de:'Ablauf',sw:'Matukio',href:'#events'},
+    {en:'Travel',de:'Anreise',sw:'Safari',href:'#travel'},
+    {en:'Gallery',de:'Galerie',sw:'Picha',href:'#gallery'},
+    {en:'RSVP',de:'RSVP',sw:'Jibu',href:'#rsvp'},
   ];
 
   return (
@@ -585,7 +581,7 @@ export function Footer() {
               }}
               onMouseEnter={e=>e.currentTarget.style.color='rgba(212,160,67,0.85)'}
               onMouseLeave={e=>e.currentTarget.style.color='rgba(253,248,235,0.3)'}
-              >{t(l.en,l.de)}</a>
+              >{t(l.en,l.de,l.sw)}</a>
             ))}
           </div>
         </nav>

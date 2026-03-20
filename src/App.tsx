@@ -61,7 +61,32 @@ function Cursor() {
   );
 }
 
-// ── Floating Language Switcher — always visible, mobile-first ──
+// ── Floating Language Switcher — SVG flags, renders everywhere ──
+// SVG flags used instead of emoji — guaranteed to show on all devices/browsers
+
+const KenyaFlag = () => (
+  <svg width="22" height="15" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" style={{ display:'block', borderRadius:'2px', flexShrink:0 }}>
+    <path fill="#060" d="M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18z"/>
+    <path fill="#BB1600" d="M0 13h36v10H0z"/>
+    <path fill="#141414" d="M32 5H4a4 4 0 0 0-4 4v4h36V9a4 4 0 0 0-4-4z"/>
+    <path fill="#EEE" d="M0 13h36v1H0zm0 9h36v1H0z"/>
+    <path fill="#141414" d="M23.054 9.404c-.066-.039-.186.089-.794.764c-.216.24-.486.539-.785.86c-.608.653-1.244 1.461-.783 1.935l-7.265 12.211c-.011.018-.019.047.003.087a.432.432 0 0 0 .294.177h.003c.046 0 .068-.021.079-.039l7.268-12.215c.626.148 1.024-.784 1.305-1.616c.14-.417.274-.796.381-1.1c.302-.856.356-1.027.294-1.064z"/>
+    <path fill="#FFF" d="M22.305 10.208c-.216.24-.486.539-.786.861c-.886.952-1.124 1.528-.769 1.868l.018.016l-7.29 12.252c-.004.008.001.021.005.027a.378.378 0 0 0 .242.145h.002c.01 0 .023-.001.028-.01l7.279-12.234l.012-.02l.022.006c.458.13.846-.355 1.254-1.572c.14-.417.274-.796.381-1.101c.168-.475.314-.889.314-.984c-.082.046-.375.372-.712.746z"/>
+    <path fill="#141414" d="M15.308 12.963c.461-.474-.174-1.282-.783-1.935c-.299-.322-.569-.62-.785-.86c-.608-.674-.728-.803-.794-.764c-.062.038-.008.208.293 1.063c.107.304.241.683.381 1.1c.28.833.678 1.764 1.305 1.616l7.268 12.215c.011.018.033.039.079.039h.003a.432.432 0 0 0 .294-.177c.021-.04.014-.069.003-.087l-7.264-12.21z"/>
+    <path fill="#FFF" d="M15.25 12.937c.355-.34.118-.916-.769-1.868c-.3-.322-.569-.621-.786-.861c-.337-.374-.631-.7-.714-.745c0 .095.146.509.314.984c.107.305.242.684.381 1.101c.409 1.217.796 1.702 1.254 1.572l.022-.006l.012.02l7.279 12.234c.005.009.019.01.028.01h.002a.374.374 0 0 0 .242-.145c.004-.007.009-.02.005-.027l-7.29-12.252l.02-.017z"/>
+    <path fill="#141414" d="M18.018 10.458L18 10.444l-.018.014c-2.492 1.87-3.704 4.331-3.704 7.523s1.211 5.653 3.704 7.524l.018.013l.018-.013c2.492-1.87 3.704-4.331 3.704-7.524s-1.212-5.655-3.704-7.523z"/>
+    <path fill="#BB1600" d="M20.879 14.059c-.603-1.363-1.551-2.54-2.88-3.54c-1.326.999-2.273 2.174-2.877 3.533c.525 1.181.782 2.468.782 3.937c0 1.467-.256 2.751-.779 3.928c.604 1.356 1.55 2.529 2.873 3.527c1.326-.999 2.273-2.174 2.876-3.534c-.521-1.178-.776-2.461-.776-3.921c.002-1.462.258-2.747.781-3.93z"/>
+    <path fill="#FFF" d="M18 18.927c.306 0 .555-.424.555-.946s-.249-.947-.555-.947c-.306 0-.554.424-.554.947c-.001.522.248.946.554.946zm-.231-2.497c-.502-.739-.746-1.677-.746-2.821c0-1.145.244-2.083.746-2.823v5.644zm.462 0c.501-.739.744-1.677.744-2.821c0-1.145-.243-2.083-.744-2.823v5.644zm-.462 3.1c-.502.738-.746 1.677-.746 2.821c0 1.146.244 2.082.746 2.822V19.53zm.462 0c.501.738.744 1.677.744 2.821c0 1.146-.243 2.082-.744 2.822V19.53z"/>
+  </svg>
+);
+const GermanyFlag = () => (
+  <svg width="22" height="15" viewBox="0 0 22 15" style={{ display:'block', borderRadius:'2px', flexShrink:0 }}>
+    <rect width="22" height="5" fill="#000"/>
+    <rect y="5" width="22" height="5" fill="#DD0000"/>
+    <rect y="10" width="22" height="5" fill="#FFCC00"/>
+  </svg>
+);
+
 function LangSwitcher() {
   const { lang, setLang } = useLang();
   const [visible, setVisible] = useState(true);
@@ -70,7 +95,6 @@ function LangSwitcher() {
   useEffect(() => {
     const onScroll = () => {
       const cur = window.scrollY;
-      // Hide when scrolling down fast, show when scrolling up
       setVisible(cur < 100 || cur < lastScroll.current);
       lastScroll.current = cur;
     };
@@ -78,125 +102,56 @@ function LangSwitcher() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  const btns = [
+    { l: 'en' as const, Flag: KenyaFlag,   label: 'EN', title: 'English' },
+    { l: 'de' as const, Flag: GermanyFlag, label: 'DE', title: 'Deutsch' },
+    { l: 'sw' as const, Flag: KenyaFlag,   label: 'SW', title: 'Kiswahili' },
+  ];
+
   return (
     <div style={{
-      position: 'fixed',
-      bottom: '24px',
-      right: '20px',
-      zIndex: 1050,
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '8px',
+      position: 'fixed', bottom: '24px', right: '20px',
+      zIndex: 1050, display: 'flex', flexDirection: 'column', gap: '6px',
       transform: visible ? 'translateY(0)' : 'translateY(100px)',
       opacity: visible ? 1 : 0,
       transition: 'transform 0.4s ease, opacity 0.4s ease',
     }}>
-      {/* Label */}
       <div style={{
-        textAlign: 'center',
-        fontFamily: "'Raleway', sans-serif",
-        fontSize: '0.52rem',
-        letterSpacing: '0.25em',
-        textTransform: 'uppercase',
-        color: 'rgba(61,43,31,0.45)',
+        textAlign: 'center', fontFamily: "'Raleway', sans-serif",
+        fontSize: '0.5rem', letterSpacing: '0.25em', textTransform: 'uppercase',
+        color: 'rgba(61,43,31,0.4)',
       }}>Language</div>
 
-      {/* Pill container */}
       <div style={{
         display: 'flex',
-        background: 'rgba(255,252,247,0.95)',
-        border: '1px solid rgba(201,150,58,0.25)',
-        borderRadius: '50px',
-        padding: '4px',
-        boxShadow: '0 4px 20px rgba(61,43,31,0.18), 0 1px 4px rgba(0,0,0,0.08)',
-        backdropFilter: 'blur(12px)',
-        WebkitBackdropFilter: 'blur(12px)',
-        gap: '4px',
+        background: 'rgba(255,252,247,0.97)',
+        border: '1px solid rgba(201,150,58,0.3)',
+        borderRadius: '50px', padding: '4px',
+        boxShadow: '0 4px 20px rgba(61,43,31,0.18)',
+        backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)',
+        gap: '3px',
       }}>
-        {/* EN button */}
-        <button
-          onClick={() => setLang('en')}
-          title="Switch to English"
-          style={{
+        {btns.map(({ l, Flag, label, title }) => (
+          <button key={l} onClick={() => setLang(l)} title={title} style={{
             display: 'flex', alignItems: 'center', gap: '5px',
-            padding: '8px 14px',
-            borderRadius: '40px',
-            border: 'none',
-            background: lang === 'en'
-              ? 'linear-gradient(135deg, #C9963A, #A07520)'
-              : 'transparent',
-            color: lang === 'en' ? '#fff' : '#6B4A30',
-            fontFamily: "'Raleway', sans-serif",
-            fontSize: '0.7rem',
-            fontWeight: 600,
-            letterSpacing: '0.1em',
-            cursor: 'pointer',
-            transition: 'all 0.3s ease',
-            whiteSpace: 'nowrap',
-            boxShadow: lang === 'en' ? '0 2px 8px rgba(201,150,58,0.35)' : 'none',
-          }}
-        >
-          <span style={{ fontSize: '1rem', lineHeight: 1 }}>🇰🇪</span>
-          <span>EN</span>
-        </button>
-
-        {/* DE button */}
-        <button
-          onClick={() => setLang('de')}
-          title="Auf Deutsch wechseln"
-          style={{
-            display: 'flex', alignItems: 'center', gap: '5px',
-            padding: '8px 14px',
-            borderRadius: '40px',
-            border: 'none',
-            background: lang === 'de'
-              ? 'linear-gradient(135deg, #C9963A, #A07520)'
-              : 'transparent',
-            color: lang === 'de' ? '#fff' : '#6B4A30',
-            fontFamily: "'Raleway', sans-serif",
-            fontSize: '0.7rem',
-            fontWeight: 600,
-            letterSpacing: '0.1em',
-            cursor: 'pointer',
-            transition: 'all 0.3s ease',
-            whiteSpace: 'nowrap',
-            boxShadow: lang === 'de' ? '0 2px 8px rgba(201,150,58,0.35)' : 'none',
-          }}
-        >
-          <span style={{ fontSize: '1rem', lineHeight: 1 }}>🇩🇪</span>
-          <span>DE</span>
-        </button>
-
-        {/* SW button */}
-        <button
-          onClick={() => setLang('sw')}
-          title="Badilisha kwa Kiswahili"
-          style={{
-            display: 'flex', alignItems: 'center', gap: '5px',
-            padding: '8px 14px',
-            borderRadius: '40px',
-            border: 'none',
-            background: lang === 'sw'
-              ? 'linear-gradient(135deg, #C9963A, #A07520)'
-              : 'transparent',
-            color: lang === 'sw' ? '#fff' : '#6B4A30',
-            fontFamily: "'Raleway', sans-serif",
-            fontSize: '0.7rem',
-            fontWeight: 600,
-            letterSpacing: '0.1em',
-            cursor: 'pointer',
-            transition: 'all 0.3s ease',
-            whiteSpace: 'nowrap',
-            boxShadow: lang === 'sw' ? '0 2px 8px rgba(201,150,58,0.35)' : 'none',
-          }}
-        >
-          <span style={{ fontSize: '1rem', lineHeight: 1 }}>🇰🇪</span>
-          <span>SW</span>
-        </button>
+            padding: '7px 12px', borderRadius: '40px', border: 'none',
+            background: lang === l ? 'linear-gradient(135deg,#C9963A,#A07520)' : 'transparent',
+            color: lang === l ? '#fff' : '#6B4A30',
+            fontFamily: "'Raleway',sans-serif", fontSize: '0.68rem',
+            fontWeight: 700, letterSpacing: '0.08em',
+            cursor: 'pointer', transition: 'all 0.3s ease', whiteSpace: 'nowrap',
+            boxShadow: lang === l ? '0 2px 8px rgba(201,150,58,0.4)' : 'none',
+            opacity: lang === l ? 1 : 0.6,
+          }}>
+            <Flag />
+            <span>{label}</span>
+          </button>
+        ))}
       </div>
     </div>
   );
 }
+
 
 // ── Inner app ──
 function AppInner() {

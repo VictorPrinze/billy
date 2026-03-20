@@ -51,6 +51,13 @@ export default function EventSection() {
     },
   ];
 
+  // Evening dinner is private — German guests only
+  // Only show it when language is set to DE
+  const visibleDays = lang === 'de' ? days : days.slice(0, 2);
+
+  // Reset to first tab if active tab becomes hidden
+  const safeActive = activeDay < visibleDays.length ? activeDay : 0;
+
   return (
     <section id="events" style={{ background:'#FAF6EF', padding:'clamp(3rem,8vw,7rem) 0', overflow:'hidden' }}>
       <div style={{ maxWidth:'1200px', margin:'0 auto', padding:'0 clamp(16px,4vw,48px)', boxSizing:'border-box' }}>
@@ -80,33 +87,42 @@ export default function EventSection() {
           </div>
         </div>
 
-        {/* Day selector */}
+        {/* Day selector — Evening Dinner only visible in German */}
+        {(() => {
+          // Reset to first tab if currently on evening dinner and not in DE
+          if (activeDay === 2 && lang !== 'de') setActiveDay(0);
+          return null;
+        })()}
         <div className="reveal" style={{ display:'flex', gap:'clamp(0.5rem,2vw,1rem)', marginBottom:'2rem', flexWrap:'wrap' }}>
-          {days.map((day, i) => (
-            <button key={i} onClick={() => setActiveDay(i)} style={{
-              flex:'1', minWidth:'min(100%,160px)',
-              padding:'1rem clamp(0.8rem,2vw,1.5rem)',
-              background: activeDay===i ? day.color : 'transparent',
-              border:`1px solid ${activeDay===i ? day.color : 'rgba(61,43,31,0.2)'}`,
-              color: activeDay===i ? '#fff' : '#6B4A30',
-              fontFamily:"'Raleway',sans-serif", fontSize:'0.72rem',
-              letterSpacing:'0.15em', textTransform:'uppercase',
-              cursor:'pointer', transition:'all 0.3s',
-              display:'flex', alignItems:'center', justifyContent:'center', gap:'0.5rem',
-            }}
-            onMouseEnter={e => { if(activeDay!==i) { e.currentTarget.style.background='rgba(61,43,31,0.06)'; } }}
-            onMouseLeave={e => { if(activeDay!==i) { e.currentTarget.style.background='transparent'; } }}
-            >
-              <span>{day.icon}</span>
-              <span>{lang==='sw' ? day.label.sw : lang==='de' ? day.label.de : day.label.en}</span>
-            </button>
-          ))}
+          {days.map((day, i) => {
+            // Hide evening dinner tab (index 2) unless language is DE
+            if (i === 2 && lang !== 'de') return null;
+            return (
+              <button key={i} onClick={() => setActiveDay(i)} style={{
+                flex:'1', minWidth:'min(100%,160px)',
+                padding:'1rem clamp(0.8rem,2vw,1.5rem)',
+                background: activeDay===i ? day.color : 'transparent',
+                border:`1px solid ${activeDay===i ? day.color : 'rgba(61,43,31,0.2)'}`,
+                color: activeDay===i ? '#fff' : '#6B4A30',
+                fontFamily:"'Raleway',sans-serif", fontSize:'0.72rem',
+                letterSpacing:'0.15em', textTransform:'uppercase',
+                cursor:'pointer', transition:'all 0.3s',
+                display:'flex', alignItems:'center', justifyContent:'center', gap:'0.5rem',
+              }}
+              onMouseEnter={e => { if(activeDay!==i) { e.currentTarget.style.background='rgba(61,43,31,0.06)'; } }}
+              onMouseLeave={e => { if(activeDay!==i) { e.currentTarget.style.background='transparent'; } }}
+              >
+                <span>{day.icon}</span>
+                <span>{lang==='sw' ? day.label.sw : lang==='de' ? day.label.de : day.label.en}</span>
+              </button>
+            );
+          })}
         </div>
 
         {/* Active day schedule */}
         <div className="reveal">
           {(() => {
-            const day = days[activeDay];
+            const day = visibleDays[safeActive];
             return (
               <div style={{ display:'grid', gridTemplateColumns:'clamp(260px,35%,360px) 1fr', gap:'clamp(1.5rem,4vw,3rem)', alignItems:'start' }} className="event-grid">
                 {/* Left: info card */}

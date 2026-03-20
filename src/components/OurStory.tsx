@@ -153,9 +153,9 @@ export default function OurStory() {
             <div className="reveal-right" style={{ position:'relative' }}>
               <div style={{ position:'relative', overflow:'hidden' }}>
                 <ProgressiveImage
-                  {...getWebPPaths('DSC05442.JPG')}
+                  {...getWebPPaths('DSC05443.JPG')}
                   alt="Billy and Sarah"
-                  position={PHOTO_POSITIONS['DSC05442.JPG'] || 'center'}
+                  position={PHOTO_POSITIONS['DSC05443.JPG'] || 'center'}
                   style={{ width:'100%', height:'clamp(300px,45vw,520px)' }}
                 />
                 {/* Gold corner frame */}
